@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .friendship import friendships
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -13,6 +13,19 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    expense = db.relationship('Expense', back_populates='lender')
+    comment = db.relationship('Comment', back_populates='creator')
+    payment = db.relationship('Payment', back_populates='borrower')
+
+    friends = db.relationship(
+        'User',
+        secondary=friendships,
+        primaryjoin=(friendships.c.inviter_id == id),
+        secondaryjoin=(friendships.c.invitee_id == id),
+        backref=db.backref('buddies', lazy='dynamic'),
+        lazy='dynamic'
+    )
 
     @property
     def password(self):
