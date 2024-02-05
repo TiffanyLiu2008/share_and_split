@@ -7,4 +7,4 @@ friendships = db.Table(
 )
 
 if environment == "production":
-    users_expenses.schema = SCHEMA
+    friendships.schema = SCHEMA
