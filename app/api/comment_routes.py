@@ -6,6 +6,17 @@ from app.forms.create_edit_comment_form import CreateEditCommentForm
 
 comment_routes = Blueprint('comment', __name__)
 
+# Get Comment Details ; GET ; /api/comments/:commentId
+@comment_routes.route('/<int:comment_id>', methods=['GET'])
+@login_required
+def get_comment_details(comment_id):
+    comment = Comment.query.get(comment_id)
+    if not comment:
+        return jsonify({'message': 'Comment could not be found'}), 404
+    if not comment.creator_id == current_user.id:
+        return jsonify({'message': 'Forbidden'}), 403
+    return jsonify(comment.to_dict())
+
 # Edit a Comment ; PUT ; /api/comments/:commentId
 @comment_routes.route('/<int:comment_id>', methods=['PUT'])
 @login_required

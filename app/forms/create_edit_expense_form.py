@@ -24,5 +24,5 @@ class CreateEditExpenseForm(FlaskForm):
     category = RadioField('Category', choices=choices, default='Others', validators=[DataRequired()])
     amount = FloatField('Amount', validators=[DataRequired(), amount_above_zero])
     shared_among = IntegerField('Number of people involved including yourself', validators=[DataRequired(), shared_with_people])
-    bill_settled = BooleanField('Bill settled?', default=False, validators=[DataRequired()])
+    bill_settled = BooleanField('Bill settled?', default=False, false_values=(False, '', 'false', 'False', 'FALSE'))
     submit = SubmitField('Submit')

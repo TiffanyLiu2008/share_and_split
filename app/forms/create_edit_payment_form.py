@@ -17,5 +17,5 @@ def borrow_self(form, field):
 
 class CreateEditPaymentForm(FlaskForm):
     borrower_username = StringField('Username of your friend', validators=[DataRequired(), user_exists, borrow_self])
-    payment_made = BooleanField('Payment made?', default=False, validators=[DataRequired()])
+    payment_made = BooleanField('Payment made?', default=False, false_values=(False, '', 'false', 'False', 'FALSE'))
     submit = SubmitField('Submit')
