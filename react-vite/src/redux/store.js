@@ -5,10 +5,18 @@ import {
   combineReducers,
 } from "redux";
 import thunk from "redux-thunk";
-import sessionReducer from "./session";
+import sessionReducer from './session';
+import expensesReducer from './expenses';
+import commentsReducer from './comments';
+import paymentsReducer from './payments';
+import friendsReducer from './friends';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  expenses: expensesReducer,
+  comments: commentsReducer,
+  payments: paymentsReducer,
+  friends: friendsReducer
 });
 
 let enhancer;

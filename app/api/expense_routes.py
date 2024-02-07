@@ -72,7 +72,6 @@ def get_all_payments_by_expense_id(expense_id):
         return jsonify({'message': 'Expense could not be found'}), 404
     if can_view_an_expense(expense_id) == False:
         return jsonify({'message': 'Forbidden'}), 403
-    # include 'each_person' in Expense as calculated attribute
     payments = Payment.query.filter(Payment.expense_id == expense_id).all()
     expense_data = expense.to_dict()
     payments_data = [{
