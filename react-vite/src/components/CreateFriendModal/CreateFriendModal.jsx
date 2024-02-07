@@ -1,13 +1,13 @@
 import './CreateFriendModal.css';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkCreateFriend, thunkGetAllFriends } from '../../redux/friends';
 
 function CreateFriendModal() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [friendUsername, setFriendUsername] = useState('');
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
@@ -17,7 +17,7 @@ function CreateFriendModal() {
     friend = {...friend, friendUsername};
     let newFriend;
     dispatch(thunkCreateFriend(friend))
-    .then((newFriend) => history.push(`/friends/${newFriend.id}`))
+    .then((newFriend) => navigate(`/friends/${newFriend.id}`))
     .then(() => dispatch(thunkGetAllFriends()))
     .then(closeModal)
     .catch(async (response) => {

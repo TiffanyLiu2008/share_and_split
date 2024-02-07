@@ -1,13 +1,13 @@
 import './SettlePaymentModal.css';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkUpdatePayment, thunkGetAllPayments } from '../../redux/payments';
 
 function SettlePaymentModal(expenseId) {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [paymentMade, setPaymentMade] = useState(false);
   const { closeModal } = useModal();
   const handleSubmit = async (e) => {
@@ -15,7 +15,7 @@ function SettlePaymentModal(expenseId) {
     payment = {...payment, borrowerUsername, paymentMade};
     let newPayment;
     dispatch(thunkUpdatePayment(expenseId, payment))
-    .then((newPayment) => history.push(`/payments/${newPayment.id}`))
+    .then((newPayment) => navigate(`/payments/${newPayment.id}`))
     .then(() => dispatch(thunkGetAllPayments()))
     .then(closeModal)
     .catch(async (response) => {

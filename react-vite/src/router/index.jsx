@@ -1,9 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './Layout';
-// import LoginFormPage from '../components/LoginFormPage';
-// import SignupFormPage from '../components/SignupFormPage';
 import HomePage from '../components/HomePage';
-import IndexPage from '../components/IndexPage';
 import ExpenseIndex from '../components/ExpenseIndex';
 import CreateExpense from '../components/CreateExpense';
 import ExpenseDetails from '../components/ExpenseDetails';
@@ -31,23 +28,16 @@ export const router = createBrowserRouter([
         exact: true
       },
       {
-        path: "/expenses/:expenseId(\d+)/edit",
+        path: "/expenses/:expenseId/edit",
         element: <UpdateExpense/>,
-        exact: true
       },
       {
-        path: "/expenses/:expenseId(\d+)",
+        path: "/expenses/:expenseId",
         element: <ExpenseDetails/>,
-        exact: true
       },
       {
         path: "/expenses",
         element: <ExpenseIndex/>,
-        exact: true
-      },
-      {
-        path: "/home",
-        element: <IndexPage/>,
         exact: true
       },
       {

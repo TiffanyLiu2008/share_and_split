@@ -1,12 +1,12 @@
 import './ExpenseForm.css';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { thunkCreateExpense, thunkUpdateExpense } from '../../redux/expenses';
 
 function ExpenseForm({expense, formType}) {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [description, setDescription] = useState(expense?.description);
   const [category, setCategory] = useState(expense?.category);
   const [amount, setAmount] = useState(expense?.amount);
@@ -21,7 +21,7 @@ function ExpenseForm({expense, formType}) {
     let newExpense;
     if (formType === 'Update Expense') {
       dispatch(thunkUpdateExpense(expense))
-      .then((newExpense) => history.push(`/expenses/${newExpense.id}`))
+      .then((newExpense) => navigate(`/expenses/${newExpense.id}`))
       .catch(async (response) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -30,7 +30,7 @@ function ExpenseForm({expense, formType}) {
       });
     } else if (formType === 'Create Expense') {
       dispatch(thunkCreateExpense(expense))
-      .then((newExpense) => history.push(`/expenses/${newExpense.id}`))
+      .then((newExpense) => navigate(`/expenses/${newExpense.id}`))
       .catch(async (response) => {
         const data = await res.json();
         if (data && data.errors) {

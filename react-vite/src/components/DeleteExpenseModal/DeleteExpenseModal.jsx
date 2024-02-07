@@ -2,7 +2,7 @@ import './DeleteExpenseModal.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
-import { thunkDeleteExpense } from "../../redux/expenses";
+import { thunkDeleteExpense } from '../../redux/expenses';
 
 function DeleteExpenseModal({expense}) {
   const expenseId = expense.id;

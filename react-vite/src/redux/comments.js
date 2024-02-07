@@ -23,7 +23,7 @@ const deleteComment = (commentId) => ({
 });
 
 export const thunkGetExpenseComments = (expenseId) => async (dispatch) => {
-    const response = await fetch(`api/expenses/${expenseId}/comments`);
+    const response = await fetch(`/api/expenses/${expenseId}/comments`);
     if (response.ok) {
         const data = await response.json();
         dispatch(loadComments(expenseId, data));
@@ -31,8 +31,8 @@ export const thunkGetExpenseComments = (expenseId) => async (dispatch) => {
     }
     return response;
 };
-export const thunkGeCommentDetails = (commentId) => async (dispatch) => {
-    const response = await fetch(`api/comments/${commentId}`);
+export const thunkGetCommentDetails = (commentId) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${commentId}`);
     if (response.ok) {
         const data = await response.json();
         dispatch(receiveComment(data));
@@ -41,7 +41,7 @@ export const thunkGeCommentDetails = (commentId) => async (dispatch) => {
     return response;
 };
 export const thunkCreateComment = (expenseId, comment) => async (dispatch) => {
-    const response = await fetch(`api/expenses/${expenseId}/comments`, {
+    const response = await fetch(`/api/expenses/${expenseId}/comments`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(comment)
@@ -54,7 +54,7 @@ export const thunkCreateComment = (expenseId, comment) => async (dispatch) => {
     return response;
 };
 export const thunkUpdateComment = (comment) => async (dispatch) => {
-    const response = await fetch(`api/comments/${comment.id}`, {
+    const response = await fetch(`/api/comments/${comment.id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(comment)
@@ -67,7 +67,7 @@ export const thunkUpdateComment = (comment) => async (dispatch) => {
     return response;
 };
 export const thunkDeleteComment = (commentId) => async (dispatch) => {
-    const response = await fetch(`api/comments/${commentId}`, {
+    const response = await fetch(`/api/comments/${commentId}`, {
         method: 'DELETE'
     });
     if (response.ok) {

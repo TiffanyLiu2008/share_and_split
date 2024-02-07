@@ -13,7 +13,7 @@ function ExpensePaymentsIndex() {
   useEffect(() => {
       dispatch(thunkGetExpensePayments(expenseId)).then(() => setIsLoading(false));
   }, [dispatch, expenseId]);
-  if (isLoading) return (<>Loading...</>);
+  // if (isLoading) return (<>Loading...</>);
 
   return (
     <div>

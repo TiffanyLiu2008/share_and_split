@@ -16,7 +16,7 @@ const deleteFriend = (friend) => ({
 });
 
 export const thunkGetAllFriends = () => async (dispatch) => {
-    const response = await fetch('api/friendships/current');
+    const response = await fetch('/api/friendships/current');
     if (response.ok) {
         const data = await response.json();
         dispatch(loadFriends(data));
@@ -25,7 +25,7 @@ export const thunkGetAllFriends = () => async (dispatch) => {
     return response;
 };
 export const thunkCreateFriend = (friend) => async (dispatch) => {
-    const response = await fetch('api/friendships', {
+    const response = await fetch('/api/friendships', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(friend)
@@ -38,7 +38,7 @@ export const thunkCreateFriend = (friend) => async (dispatch) => {
     return response;
 };
 export const thunkDeleteFriend = (friendId) => async (dispatch) => {
-    const response = await fetch(`api/friendships/${friendId}`, {
+    const response = await fetch(`/api/friendships/${friendId}`, {
         method: 'DELETE'
     });
     if (response.ok) {

@@ -2,6 +2,7 @@ import './ExpenseDetails.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteExpenseModal from '../DeleteExpenseModal';
@@ -18,7 +19,6 @@ function ExpenseDetails() {
   useEffect(() => {
     dispatch(thunkGetExpenseDetails(expenseId)).then(() => setIsLoading(false));
   }, [dispatch, expenseId]);
-  if (isLoading) return (<>Loading...</>);
   const {lender_id, description, category, amount, shared_among, bill_settled, created_at, lender_username} = expense;
   const sessionUser = useSelector(state => state.session.user);
   const sessionUserId = sessionUser ? sessionUser.id : null;

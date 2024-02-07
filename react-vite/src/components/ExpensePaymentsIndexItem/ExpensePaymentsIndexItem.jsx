@@ -1,6 +1,6 @@
 import './ExpensePaymentsIndexItem.css';
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ExpensePaymentsIndexItem({payment}) {
   const {each_person, borrower_username} = payment;

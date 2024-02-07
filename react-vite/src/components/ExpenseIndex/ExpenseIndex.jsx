@@ -6,19 +6,28 @@ import ExpenseIndexItem from '../ExpenseIndexItem';
 
 function ExpenseIndex() {
   const dispatch = useDispatch();
-  const expenses = useSelector(state => Object.values(state.expenses));
+  const expenses = useSelector(state => state.expenses.expenses);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    dispatch(thunkGetAllExpenses()).then(() => setIsLoading(false));
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetAllExpenses());
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Fetching expenses error', error);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, [dispatch]);
+  if (isLoading) return (<>Loading...</>);
 
   return (
     <div>
-      <h1>Welcome</h1>
       <ul className='expenseIndex'>
         {expenses.map((expense) => (
           <li className='eachExpense' key={expense.Id}>
-            <ExpenseIndexItem expense={expense} key={expense.id}/>
+            <ExpenseIndexItem expense={expense} key={expense.Id}/>
           </li>
         ))}
       </ul>

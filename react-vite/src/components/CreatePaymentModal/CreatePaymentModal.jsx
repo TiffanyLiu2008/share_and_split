@@ -1,6 +1,6 @@
 import './CreatePaymentModal.css';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkCreatePayment, thunkGetExpensePayments } from '../../redux/payments';
@@ -8,7 +8,7 @@ import { thunkGetExpenseDetails } from '../../redux/expenses';
 
 function CreatePaymentModal(expenseId) {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [borrowerUsername, setBorrowerUsername] = useState('');
   const [paymentMade, setPaymentMade] = useState(false);
   const [errors, setErrors] = useState({});
@@ -19,7 +19,7 @@ function CreatePaymentModal(expenseId) {
     payment = {...payment, borrowerUsername, paymentMade};
     let newPayment;
     dispatch(thunkCreatePayment(expenseId, payment))
-    .then((newPayment) => history.push(`/payments/${newPayment.id}`))
+    .then((newPayment) => navigate(`/payments/${newPayment.id}`))
     .then(() => dispatch(thunkGetExpensePayments(expenseId)))
     .then(() => dispatch(thunkGetExpenseDetails(expenseId)))
     .then(closeModal)

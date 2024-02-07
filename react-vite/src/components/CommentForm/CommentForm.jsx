@@ -1,6 +1,6 @@
 import './CommentForm.css';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkCreateComment, thunkUpdateComment, thunkGetExpenseComments } from '../../redux/comments';
@@ -8,7 +8,7 @@ import { thunkGetExpenseDetails } from '../../redux/expenses';
 
 function CommentForm({expenseId, comment, formType}) {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [commentText, setCommentText] = useState(comment?.comment);
   const title = formType === 'Create Comment' ? 'Create a New Comment' : 'Update Your Comment';
   const { closeModal } = useModal();
@@ -18,7 +18,7 @@ function CommentForm({expenseId, comment, formType}) {
     let newComment;
     if (formType === 'Update Comment') {
       dispatch(thunkUpdateComment(comment))
-      .then((newComment) => history.push(`/comments/${newComment.id}`))
+      .then((newComment) => navigate(`/comments/${newComment.id}`))
       .then(() => dispatch(thunkGetExpenseComments(expenseId)))
       .then(() => dispatch(thunkGetExpenseDetails(expenseId)))
       .then(closeModal)
@@ -30,7 +30,7 @@ function CommentForm({expenseId, comment, formType}) {
       })
     } else if (formType === 'Create Comment') {
       dispatch(thunkCreateComment(expenseId, comment))
-      .then((newComment) => history.push(`/comments/${newComment.id}`))
+      .then((newComment) => navigate(`/comments/${newComment.id}`))
       .then(() => dispatch(thunkGetExpenseComments(expenseId)))
       .then(() => dispatch(thunkGetExpenseDetails(expenseId)))
       .then(closeModal)
