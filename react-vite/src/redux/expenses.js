@@ -81,12 +81,14 @@ function expensesReducer(state = {}, action) {
         case LOAD_EXPENSES:
             return {...state, expenses: action.expenses.expenses};
         case RECEIVE_EXPENSE:
-            return {...state, [action.expense.id]: action.expense};
+            const {id} = action.expense;
+            return {...state, [id]: action.expense};
         case UPDATE_EXPENSE:
             return {...state, [action.expense.id]: action.expense};
         case DELETE_EXPENSE:
+            const {expenseId} = action;
             const newState = {...state};
-            delete newState[action.expenseId];
+            delete newState[expenseId];
             return newState;
         default:
             return state;

@@ -6,20 +6,18 @@ import ExpenseIndexItem from '../ExpenseIndexItem';
 
 function ExpenseIndex() {
   const dispatch = useDispatch();
-  const expenses = useSelector(state => state.expenses.expenses);
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         await dispatch(thunkGetAllExpenses());
-        setIsLoading(false);
       } catch (error) {
         console.error('Fetching expenses error', error);
-        setIsLoading(false);
       }
     };
     fetchData();
   }, [dispatch]);
+  const expenses = useSelector(state => state.expenses.expenses);
+  const isLoading = !expenses;
   if (isLoading) return (<>Loading...</>);
 
   return (
