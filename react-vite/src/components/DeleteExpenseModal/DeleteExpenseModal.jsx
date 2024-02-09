@@ -21,13 +21,6 @@ function DeleteExpenseModal({expense}) {
         setErrors(data.errors);
       }
     });
-    // try {
-    //   await dispatch(thunkDeleteExpense(expenseId));
-    //   (closeModal);
-    //   await navigate('/expenses');
-    // } catch (error) {
-    //   console.error('Deleting expense error', error);
-    // }
   };
 
   return (
