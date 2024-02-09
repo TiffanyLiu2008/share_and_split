@@ -10,23 +10,30 @@ import CreateComment from '../CreateComment';
 function ExpenseCommentsIndex() {
   const dispatch = useDispatch();
   const {expenseId} = useParams();
-  const comments = useSelector(state => state.comments[expenseId]);
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-      dispatch(thunkGetExpenseComments(expenseId)).then(() => setIsLoading(false));
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetExpenseComments(expenseId));
+      } catch (error) {
+        console.error('Fetching expense comments error', error);
+      }
+    };
+    fetchData();
   }, [dispatch, expenseId]);
-  // if (isLoading) return (<>Loading...</>);
+  const comments = useSelector(state => state.comments[expenseId]);
+  const isLoading = !comments;
+  if (isLoading) return (<>Loading...</>);
 
   return (
     <div>
       <p className='heading'>Comments:</p>
       <OpenModalMenuItem itemText='Add' modalComponent={<CreateComment/>}/>
       <ul className='expenseCommentsIndex'>
-        {comments.map((comment) => {
+        {Object.values(comments).map((comment) => (
           <li className='eachComment' key={comment.id}>
             <ExpenseCommentsIndexItem eachComment={comment} key={comment.id}/>
           </li>
-        })}
+        ))}
       </ul>
     </div>
   );

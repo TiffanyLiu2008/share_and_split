@@ -1,10 +1,15 @@
 const LOAD_PAYMENTS = 'payments/LOAD_PAYMENTS';
+const RECEIVE_PAYMENTS = 'payments/RECEIVE_PAYMENTS';
 const RECEIVE_PAYMENT = 'payments/RECEIVE_PAYMENT';
 const UPDATE_PAYMENT = 'payments/UPDATE_PAYMENT';
 
 const loadPayments = (expenseId, payments) => ({
     type: LOAD_PAYMENTS,
     expenseId,
+    payments
+});
+const receivePayments = (payments) => ({
+    type: RECEIVE_PAYMENTS,
     payments
 });
 const receivePayment = (expenseId, payment) => ({
@@ -21,7 +26,7 @@ export const thunkGetAllPayments = () => async (dispatch) => {
     const response = await fetch('/api/payments/current');
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadPayments(data));
+        dispatch(receivePayments(data));
         return data;
     }
     return response;
@@ -70,6 +75,8 @@ function paymentsReducer(state = {}, action) {
                 paymentsState[payment.id] = payment;
             });
             return {...state, [action.expenseId]: paymentsState};
+        case RECEIVE_PAYMENTS:
+            return action.payments;
         case RECEIVE_PAYMENT:
             return {...state, [action.expenseId]: action.payment};
         case UPDATE_PAYMENT:

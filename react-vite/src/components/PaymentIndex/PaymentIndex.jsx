@@ -6,15 +6,22 @@ import PaymentIndexItem from '../PaymentIndexItem';
 
 function PaymentIndex() {
   const dispatch = useDispatch();
-  const payments = useSelector(state => Object.values(state.payments));
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    dispatch(thunkGetAllPayments()).then(() => setIsLoading(false));
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetAllPayments());
+      } catch (error) {
+        console.error('Fetching payments error', error);
+      }
+    };
+    fetchData();
   }, [dispatch]);
+  const payments = useSelector(state => state.payments.payments);
+  const isLoading = !payments;
+  if (isLoading) return (<>Loading...</>);
 
   return (
     <div>
-      <h1>Welcome</h1>
       <ul className='paymentIndex'>
         {payments.map((payment) => (
           <li className='eachPayment' key={payment.Id}>

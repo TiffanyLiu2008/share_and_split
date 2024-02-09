@@ -8,21 +8,28 @@ import ExpensePaymentsIndexItem from '../ExpensePaymentsIndexItem/ExpensePayment
 function ExpensePaymentsIndex() {
   const dispatch = useDispatch();
   const {expenseId} = useParams();
-  const payments = useSelector(state => state.payments[expenseId]);
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-      dispatch(thunkGetExpensePayments(expenseId)).then(() => setIsLoading(false));
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetExpensePayments(expenseId));
+      } catch (error) {
+        console.error('Fetching expense payments error', error);
+      }
+    };
+    fetchData();
   }, [dispatch, expenseId]);
-  // if (isLoading) return (<>Loading...</>);
+  const payments = useSelector(state => state.payments[expenseId]);
+  const isLoading = !payments;
+  if (isLoading) return (<>Loading...</>);
 
   return (
     <div>
       <ul className='expensePaymentsIndex'>
-        {payments.map((payment) => {
+        {Object.values(payments).map((payment) => (
           <li className='eachPayment' key={payment.id}>
-            <ExpensePaymentsIndexItem eachPayment={payment} key={payment.id}/>
+            <ExpensePaymentsIndexItem payment={payment} key={payment.id}/>
           </li>
-        })}
+        ))}
       </ul>
     </div>
   );

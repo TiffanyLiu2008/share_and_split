@@ -14,14 +14,12 @@ function ExpenseDetails() {
   const {expenseId} = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const sessionUserId = sessionUser ? sessionUser.id : null;
-  // const payments = useSelector(state => state.payments[expenseId]);
-  // const comments = useSelector(state => state.comments[expenseId]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         await dispatch(thunkGetExpenseDetails(expenseId));
       } catch (error) {
-        console.error('Fetching expenses error', error);
+        console.error('Fetching expense details error', error);
       }
     };
     fetchData();
@@ -57,8 +55,9 @@ function ExpenseDetails() {
       <p className='expenseDetailCategory'>{category}</p>
       <p className='expenseDetailInfo'>{lender_username} paid ${amount}</p>
       <p className='expenseDetailInfo'>Splitted by:</p>
-      {/* {/* <ExpensePaymentsIndex className='eachPayment'/>
-      <ExpenseCommentsIndex className='eachComment'/> */}
+      <li className='expenseLenderInfo'>{lender_username} ${amount/shared_among}</li>
+      <ExpensePaymentsIndex className='eachPayment'/>
+      <ExpenseCommentsIndex className='eachComment'/>
     </div>
   );
 }

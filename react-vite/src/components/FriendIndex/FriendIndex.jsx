@@ -8,15 +8,22 @@ import CreateFriendModal from '../CreateFriendModal';
 
 function FriendIndex() {
   const dispatch = useDispatch();
-  const friends = useSelector(state => Object.values(state.friends));
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    dispatch(thunkGetAllFriends()).then(() => setIsLoading(false));
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetAllFriends());
+      } catch (error) {
+        console.error('Fetching friends error', error);
+      }
+    };
+    fetchData();
   }, [dispatch]);
+  const friends = useSelector(state => state.friends.friends);
+  const isLoading = !friends;
+  if (isLoading) return (<>Loading...</>);
 
   return (
     <div>
-      <h1>Welcome</h1>
       <ul className='friendIndex'>
         {friends.map((friend) => (
           <li className='eachFriend' key={friend.Id}>
