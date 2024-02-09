@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function ExpenseIndexItem({expense}) {
-  const {lender_id, description, bill_settled, created_at, each_person} = expense;
+  const {lender_id, description, amount, shared_among, bill_settled, created_at, each_person} = expense;
   const sessionUser = useSelector(state => state.session.user);
   const sessionUserId = sessionUser ? sessionUser.id : null;
   const isLender = sessionUserId === lender_id;
@@ -25,7 +25,7 @@ function ExpenseIndexItem({expense}) {
           <p className='expenseInfo'>You borrowed {each_person}</p>
         }
         {isLender && !bill_settled &&
-          <p className='expenseInfo'>You lent {each_person}</p>
+          <p className='expenseInfo'>You paid ${amount} for {shared_among} people</p>
         }
         {bill_settled &&
           <p className='expenseInfo'>{each_person} (settled)</p>

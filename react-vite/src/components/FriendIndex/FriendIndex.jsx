@@ -27,7 +27,7 @@ function FriendIndex() {
       <ul className='friendIndex'>
         {friends.map((friend) => (
           <li className='eachFriend' key={friend.Id}>
-            <FriendIndexItem friend={friend} key={friend.id}/>
+            <FriendIndexItem friend={friend} key={friend.Id}/>
           </li>
         ))}
       </ul>

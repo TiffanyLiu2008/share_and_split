@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkDeleteComment } from '../../redux/comments';
 
-function DeleteCommentModal({comment}) {
-  const commentId = comment.id;
+function DeleteCommentModal({eachComment}) {
+  const expenseId = eachComment.expense_id;
+  const commentId = eachComment.id;
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(thunkDeleteComment(commentId))
+    dispatch(thunkDeleteComment(expenseId, commentId))
     .then(closeModal)
     .catch(async (res) => {
       const data = await res.json();

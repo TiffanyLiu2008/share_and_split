@@ -25,8 +25,8 @@ function ExpenseCommentsIndexItem({eachComment}) {
       <p className='commentCreatedAt'>{date}</p>
       {isCreator &&
         <div>
-          <OpenModalMenuItem itemText='Edit' modalComponent={<UpdateComment comment={comment}/>}/>
-          <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteCommentModal comment={comment}/>}/>
+          <OpenModalMenuItem itemText='Edit' modalComponent={<UpdateComment eachComment={eachComment}/>}/>
+          <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteCommentModal eachComment={eachComment}/>}/>
         </div>
       }
     </div>

@@ -10,9 +10,9 @@ const receiveFriend = (friend) => ({
     type: RECEIVE_FRIEND,
     friend
 });
-const deleteFriend = (friend) => ({
+const deleteFriend = (friendId) => ({
     type: DELETE_FRIEND,
-    friend
+    friendId
 });
 
 export const thunkGetAllFriends = () => async (dispatch) => {
@@ -53,19 +53,10 @@ function friendsReducer(state = {}, action) {
     switch (action.type) {
         case LOAD_FRIENDS:
             return {...state, ...action.friends}
-            // const friendsState = {...state};
-            // action.friends.friends.forEach((friend) => {
-            //     if (!friendsState[friend.id]) {
-            //         friendsState[friend.id] = friend;
-            //     }
-            // });
-            // return {...friendsState};
         case RECEIVE_FRIEND:
             return {...state, [action.friend.id]: action.friend};
         case DELETE_FRIEND:
-            const newState = {...state};
-            delete newState[action.friendId];
-            return newState;
+            return {...state, friends: state.friends.filter(friend => friend.id !== action.friendId)};
         default:
             return state;
     }

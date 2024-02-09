@@ -47,7 +47,7 @@ function ExpenseDetails() {
         <p>settled</p>
       }
       {isLender &&
-        <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteExpenseModal/>}/>
+        <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteExpenseModal expense={expense}/>}/>
       }
       <p className='expenseDetailBillSettled'>{bill_settled}</p>
       <p className='expenseDetailCreatedAt'>{date}</p>

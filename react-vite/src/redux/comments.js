@@ -17,8 +17,9 @@ const updateComment = (comment) => ({
     type: UPDATE_COMMENT,
     comment
 });
-const deleteComment = (commentId) => ({
+const deleteComment = (expenseId, commentId) => ({
     type: DELETE_COMMENT,
+    expenseId,
     commentId
 });
 
@@ -66,37 +67,38 @@ export const thunkUpdateComment = (comment) => async (dispatch) => {
     }
     return response;
 };
-export const thunkDeleteComment = (commentId) => async (dispatch) => {
+export const thunkDeleteComment = (expenseId, commentId) => async (dispatch) => {
     const response = await fetch(`/api/comments/${commentId}`, {
         method: 'DELETE'
     });
     if (response.ok) {
         const data = await response.json();
-        dispatch(deleteComment(commentId));
+        dispatch(deleteComment(expenseId, commentId));
         return data;
     }
     return response;
 };
 
-function commentsReducer(state = {}, action) {
-    switch (action.type) {
-        case LOAD_COMMENTS:
-            const commentsState = {};
-            action.comments.comments.forEach((comment) => {
-                commentsState[comment.id] = comment;
-            });
-            return {...state, [action.expenseId]: commentsState};
-        case RECEIVE_COMMENT:
-            return {...state, [action.expenseId]: action.comment};
-        case UPDATE_COMMENT:
-            return {...state, [action.comment.id]: action.comment};
-        case DELETE_COMMENT:
-            const newState = {...state};
-            delete newState[action.commentId];
-            return newState;
-        default:
-            return state;
-    }
+const initialState = {comments: []};
+function commentsReducer(state = initialState, action) {
+  switch (action.type) {
+    case LOAD_COMMENTS:
+      const commentsState = {};
+      action.comments.comments.forEach((comment) => {
+        commentsState[comment.id] = comment;
+      });
+      return {...state, [action.expenseId]: commentsState};
+    case RECEIVE_COMMENT:
+      return {...state, [action.expenseId]: action.comment};
+    case UPDATE_COMMENT:
+      return {...state, [action.expenseId]: action.comment};
+    case DELETE_COMMENT:
+      const updatedComments = {...state[action.expenseId]};
+      delete updatedComments[action.commentId];
+      return {...state, [action.expenseId]: updatedComments};
+    default:
+      return state;
+  }
 }
 
 export default commentsReducer;

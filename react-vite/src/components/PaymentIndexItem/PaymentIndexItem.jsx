@@ -30,7 +30,7 @@ function PaymentIndexItem({payment}) {
       {!isBorrower && !payment_made &&
         <div>
           <p className='paymentInfo'>{borrower_username} owes you ${each_person}</p>
-          <OpenModalMenuItem itemText='Settle' modalComponent={<SettlePaymentModal payment={payment}/>}/>
+          <OpenModalMenuItem itemText='settle' modalComponent={<SettlePaymentModal payment={payment}/>}/>
         </div>
       }
       {isBorrower && payment_made &&
