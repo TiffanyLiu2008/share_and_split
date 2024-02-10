@@ -1,24 +1,30 @@
 import ExpenseForm from '../ExpenseForm';
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 
 function UpdateExpense() {
   const dispatch = useDispatch();
-  const { expenseId } = useParams;
-  const expense = useSelector(state => state.expenses[expenseId]);
+  const {expenseId} = useParams();
   useEffect(() => {
-    dispatch(thunkGetExpenseDetails(expenseId));
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetExpenseDetails(expenseId));
+      } catch (error) {
+        console.error('Fetching expense details error', error);
+      }
+    };
+    fetchData();
   }, [dispatch, expenseId]);
-  if (!expense) return (<></>);
+  const expense = useSelector(state => state.expenses[expenseId]);
+  const isLoading = !expense;
+  if (isLoading) return (<>Loading...</>);
 
   return (
-    Object.keys(expense).length > 1 && (
-      <>
-        <ExpenseForm expense={expense} formType='Update Expense'/>
-      </>
-    )
+    <div>
+      <ExpenseForm expense={expense} formType='Update Expense'/>
+    </div>
   );
 }
 

@@ -41,7 +41,7 @@ function ExpenseDetails() {
   return (
     <div>
       {isLender && !bill_settled &&
-        <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>settle</button></Link>
+        <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
       }
       {isLender && bill_settled &&
         <p>settled</p>
