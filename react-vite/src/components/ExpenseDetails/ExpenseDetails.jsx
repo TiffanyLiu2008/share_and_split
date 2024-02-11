@@ -1,13 +1,14 @@
 import './ExpenseDetails.css';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
+import { thunkGetExpensePayments } from '../../redux/payments';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteExpenseModal from '../DeleteExpenseModal';
 import ExpensePaymentsIndex from '../ExpensePaymentsIndex';
 import ExpenseCommentsIndex from '../ExpenseCommentsIndex';
+import CreatePaymentModal from '../CreatePaymentModal';
 
 function ExpenseDetails() {
   const dispatch = useDispatch();
@@ -24,8 +25,19 @@ function ExpenseDetails() {
     };
     fetchData();
   }, [dispatch, expenseId]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await dispatch(thunkGetExpensePayments(expenseId));
+      } catch (error) {
+        console.error('Fetching expense payments error', error);
+      }
+    };
+    fetchData();
+  }, [dispatch, expenseId]);
   const expense = useSelector(state => state.expenses[expenseId]);
-  const isLoading = !expense;
+  const payments = useSelector(state => state.payments[expenseId]);
+  const isLoading = !expense || !payments;
   if (isLoading) return (<>Loading...</>);
   const {lender_id, description, category, amount, shared_among, bill_settled, created_at, lender_username} = expense;
   const isLender = sessionUserId === lender_id;
@@ -37,6 +49,7 @@ function ExpenseDetails() {
     return `${month} ${day}, ${year}`;
   };
   const date = convertDate(created_at);
+  const needMorePayments = Object.values(payments).length !== shared_among - 1;
 
   return (
     <div>
@@ -56,6 +69,9 @@ function ExpenseDetails() {
       <p className='expenseDetailInfo'>{lender_username} paid ${amount}</p>
       <p className='expenseDetailInfo'>Splitted by:</p>
       <li className='expenseLenderInfo'>{lender_username} ${amount/shared_among}</li>
+      {isLender && needMorePayments &&
+        <OpenModalMenuItem itemText='People involved' modalComponent={<CreatePaymentModal expense={expense}/>}/>
+      }
       <ExpensePaymentsIndex className='eachPayment'/>
       <ExpenseCommentsIndex className='eachComment'/>
     </div>

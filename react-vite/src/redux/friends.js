@@ -25,10 +25,9 @@ export const thunkGetAllFriends = () => async (dispatch) => {
     return response;
 };
 export const thunkCreateFriend = (friend) => async (dispatch) => {
-    const response = await fetch('/api/friendships', {
+    const response = await fetch('/api/friendships/', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(friend)
+        body: friend
     })
     if (response.ok) {
         const data = await response.json();

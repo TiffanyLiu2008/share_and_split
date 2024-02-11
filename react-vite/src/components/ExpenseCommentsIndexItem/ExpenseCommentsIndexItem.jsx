@@ -5,7 +5,8 @@ import UpdateComment from '../UpdateComment';
 import DeleteCommentModal from '../DeleteCommentModal';
 
 function ExpenseCommentsIndexItem({eachComment}) {
-  const {creator_id, comment, created_at, creator_username} = eachComment;
+  const {creator_id, expense_id, comment, created_at, creator_username} = eachComment;
+  const expenseId = expense_id;
   const sessionUser = useSelector(state => state.session.user);
   const sessionUserId = sessionUser ? sessionUser.id : null;
   const isCreator = sessionUserId === creator_id;

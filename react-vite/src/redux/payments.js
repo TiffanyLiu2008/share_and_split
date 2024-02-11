@@ -43,8 +43,7 @@ export const thunkGetExpensePayments = (expenseId) => async (dispatch) => {
 export const thunkCreatePayment = (expenseId, payment) => async (dispatch) => {
     const response = await fetch(`/api/expenses/${expenseId}/payments`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payment)
+        body: payment
     })
     if (response.ok) {
         const data = await response.json();

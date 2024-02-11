@@ -44,8 +44,7 @@ export const thunkGetCommentDetails = (commentId) => async (dispatch) => {
 export const thunkCreateComment = (expenseId, comment) => async (dispatch) => {
     const response = await fetch(`/api/expenses/${expenseId}/comments`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(comment)
+        body: comment
     })
     if (response.ok) {
         const data = await response.json();
@@ -55,10 +54,10 @@ export const thunkCreateComment = (expenseId, comment) => async (dispatch) => {
     return response;
 };
 export const thunkUpdateComment = (comment) => async (dispatch) => {
-    const response = await fetch(`/api/comments/${comment.id}`, {
+    const commentId = comment.get('id');
+    const response = await fetch(`/api/comments/${commentId}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(comment)
+        body: comment
     });
     if (response.ok) {
         const data = await response.json();

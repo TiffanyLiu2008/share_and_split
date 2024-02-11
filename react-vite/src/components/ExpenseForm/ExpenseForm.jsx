@@ -15,7 +15,7 @@ function ExpenseForm({expense, formType}) {
   const [bill_settled, setBillSettled] = useState(expense?.bill_settled);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const title = formType === 'Create Expense' ? 'Create a New Expense' : 'Update Your Expense';
+  const title = formType === 'Create Expense' ? 'Create an expense' : 'Update my expense';
   const onStatusChange = e => {
     setBillSettled(e.target.value);
   };
@@ -66,8 +66,8 @@ function ExpenseForm({expense, formType}) {
       } catch (error) {
         console.error('Creating/updating expense form error', error);
       } finally {
-        setIsLoading(false);
         navigate('/expenses');
+        setIsLoading(false);
       }
     };
   };
@@ -103,15 +103,17 @@ function ExpenseForm({expense, formType}) {
         Amount<br/>
         <input className='expenseFormNormal' type='text' value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)} required/><br/>
       </label>
-      <label className='expenseFormNormal'>
-        Number of people involved including yourself:<br/>
-        <input className='expenseFormNormal' type='text' value={shared_among} placeholder='Number of people' onChange={(e) => setSharedAmong(e.target.value)} required/><br/>
-      </label>
       <div className='expenseFormBillSettled'>
         Bill settled?<br/>
         <input type='radio' value='True' checked={bill_settled === 'True'} onChange={onStatusChange} required/>Yes
         <input type='radio' value='False' checked={bill_settled === 'False'} onChange={onStatusChange} required/>No
       </div>
+      {formType === 'Create Expense' &&
+        <label className='expenseFormNormal'>
+          Number of people involved including yourself:<br/>
+          <input className='expenseFormNormal' type='text' value={shared_among} placeholder='Number of people' onChange={(e) => setSharedAmong(e.target.value)} required/><br/>
+        </label>
+      }
       <button className='submitExpenseButton' type='submit'>{title}</button>
     </form>
   );
