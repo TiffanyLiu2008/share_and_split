@@ -1,29 +1,27 @@
 import './SettlePaymentModal.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkUpdatePayment, thunkGetAllPayments } from '../../redux/payments';
 
-function SettlePaymentModal(expenseId) {
+function SettlePaymentModal({payment}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [paymentMade, setPaymentMade] = useState(false);
-  const { closeModal } = useModal();
+  const [paymentMade, setPaymentMade] = useState(payment?.payment_made);
+  const {closeModal} = useModal();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    payment = {...payment, borrowerUsername, paymentMade};
-    let newPayment;
-    dispatch(thunkUpdatePayment(expenseId, payment))
-    .then((newPayment) => navigate(`/payments/${newPayment.id}`))
-    .then(() => dispatch(thunkGetAllPayments()))
-    .then(closeModal)
-    .catch(async (response) => {
-      const data = await response.json();
-      if (data && data.errors) {
-        setErrors(data.errors);
-      }
-    });
+    const formData = new FormData();
+    formData.append('id', payment.id);
+    formData.append('borrower_username', payment.borrower_username);
+    formData.append('payment_made', true);
+    try {
+      await dispatch(thunkUpdatePayment(formData));
+      await dispatch(thunkGetAllPayments());
+    } catch (error) {
+      console.error('Settling payment error', error);
+    } finally {
+      closeModal();
+    }
   };
 
   return (

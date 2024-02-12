@@ -53,10 +53,10 @@ export const thunkCreatePayment = (expenseId, payment) => async (dispatch) => {
     return response;
 };
 export const thunkUpdatePayment = (payment) => async (dispatch) => {
-    const response = await fetch(`/api/payments/${payment.id}`, {
+    const paymentId = payment.get('id');
+    const response = await fetch(`/api/payments/${paymentId}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payment)
+        body: payment
     });
     if (response.ok) {
         const data = await response.json();
