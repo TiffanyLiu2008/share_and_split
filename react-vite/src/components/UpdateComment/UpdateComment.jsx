@@ -1,14 +1,13 @@
 import './UpdateComment.css';
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkUpdateComment, thunkGetExpenseComments } from '../../redux/comments';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 
 function UpdateComment({eachComment}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const {expenseId} = useParams();
   const [commentText, setCommentText] = useState(eachComment?.comment);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +28,6 @@ function UpdateComment({eachComment}) {
       console.error('Updating comment error', error);
     } finally {
       closeModal();
-      navigate(`/expenses/${expenseId}`);
       setIsLoading(false);
     }
   };

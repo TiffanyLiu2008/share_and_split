@@ -1,5 +1,5 @@
 import './PaymentIndex.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllPayments } from '../../redux/payments';
 import PaymentIndexItem from '../PaymentIndexItem';

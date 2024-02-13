@@ -1,14 +1,12 @@
 import './CreateComment.css';
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkCreateComment, thunkGetExpenseComments } from '../../redux/comments';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 
 function CreateComment({expenseId}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [commentText, setCommentText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -27,7 +25,6 @@ function CreateComment({expenseId}) {
       console.error('Creating comment error', error);
     } finally {
       closeModal();
-      navigate(`/expenses/${expenseId}`);
       setIsLoading(false);
     }
   };

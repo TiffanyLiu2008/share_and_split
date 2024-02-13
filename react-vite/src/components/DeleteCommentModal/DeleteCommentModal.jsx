@@ -1,6 +1,5 @@
 import './DeleteCommentModal.css';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkDeleteComment } from '../../redux/comments';
 
@@ -8,7 +7,7 @@ function DeleteCommentModal({eachComment}) {
   const expenseId = eachComment.expense_id;
   const commentId = eachComment.id;
   const dispatch = useDispatch();
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
   const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(thunkDeleteComment(expenseId, commentId))

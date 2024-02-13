@@ -1,7 +1,6 @@
 import './DeleteExpenseModal.css';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkDeleteExpense } from '../../redux/expenses';
 
@@ -9,7 +8,7 @@ function DeleteExpenseModal({expense}) {
   const expenseId = expense.id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
   const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(thunkDeleteExpense(expenseId))

@@ -34,7 +34,7 @@ export const thunkCreateFriend = (friend) => async (dispatch) => {
         dispatch(receiveFriend(data));
         return data;
     }
-    return response;
+    return error;
 };
 export const thunkDeleteFriend = (friendId) => async (dispatch) => {
     const response = await fetch(`/api/friendships/${friendId}`, {

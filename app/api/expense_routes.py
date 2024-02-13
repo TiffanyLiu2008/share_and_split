@@ -97,14 +97,18 @@ def create_a_payment_by_expense_id(expense_id):
         return jsonify({'message': 'Forbidden'}), 403
     form = CreateEditPaymentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    new_borrower_username = form.data['borrower_username']
+    new_borrower = User.query.filter(User.username == new_borrower_username).first()
+    new_borrower_id = new_borrower.id
+    existing_payments = Payment.query.filter(Payment.expense_id == expense_id).all()
+    new_borrower_is_existing = any(payment.borrower_id == new_borrower_id for payment in existing_payments)
+    if new_borrower_is_existing:
+        return jsonify({'message': 'Friend is already in list'}), 400
     if form.validate_on_submit():
-        borrower_username = form.data['borrower_username']
-        borrower = User.query.filter(User.username == borrower_username).first()
-        borrower_id = borrower.id
         new_payment = Payment(
             expense_id=expense_id,
-            borrower_id=borrower_id,
-            payment_made=form.data['payment_made'],
+            borrower_id=new_borrower_id,
+            payment_made=form.data['payment_made']
         )
         db.session.add(new_payment)
         db.session.commit()
@@ -129,7 +133,7 @@ def get_expense_details(expense_id):
 @expense_routes.route('/<int:expense_id>', methods=['PUT'])
 @login_required
 def edit_an_expense(expense_id):
-    expense = Expense.query.filter(Expense.id == expense_id).first()
+    expense = Expense.query.get(expense_id)
     if not expense:
         return jsonify({'message': 'Expense could not be found'}), 404
     if not expense.lender_id == current_user.id:
@@ -150,7 +154,7 @@ def edit_an_expense(expense_id):
 @expense_routes.route('/<int:expense_id>', methods=['DELETE'])
 @login_required
 def delete_an_expense(expense_id):
-    expense = Expense.query.filter(Expense.id == expense_id).first()
+    expense = Expense.query.get(expense_id)
     if not expense:
         return jsonify({'message': 'Expense could not be found'}), 404
     if not expense.lender_id == current_user.id:

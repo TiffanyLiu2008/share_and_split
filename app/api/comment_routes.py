@@ -21,7 +21,7 @@ def get_comment_details(comment_id):
 @comment_routes.route('/<int:comment_id>', methods=['PUT'])
 @login_required
 def edit_a_comment(comment_id):
-    comment = Comment.query.filter(Comment.id == comment_id).first()
+    comment = Comment.query.get(comment_id)
     if not comment:
         return jsonify({'message': 'Comment could not be found'}), 404
     if not comment.creator_id == current_user.id:
@@ -38,7 +38,7 @@ def edit_a_comment(comment_id):
 @comment_routes.route('/<int:comment_id>', methods=['DELETE'])
 @login_required
 def delete_a_comment(comment_id):
-    comment = Comment.query.filter(Comment.id == comment_id).first()
+    comment = Comment.query.get(comment_id)
     if not comment:
         return jsonify({'message': 'Comment could not be found'}), 404
     if not comment.creator_id == current_user.id:

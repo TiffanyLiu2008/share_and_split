@@ -50,7 +50,7 @@ export const thunkCreatePayment = (expenseId, payment) => async (dispatch) => {
         dispatch(receivePayment(expenseId, data));
         return data;
     }
-    return response;
+    return error;
 };
 export const thunkUpdatePayment = (payment) => async (dispatch) => {
     const paymentId = payment.get('id');

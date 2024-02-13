@@ -1,5 +1,5 @@
 import './ExpenseIndex.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllExpenses } from '../../redux/expenses';
 import ExpenseIndexItem from '../ExpenseIndexItem';

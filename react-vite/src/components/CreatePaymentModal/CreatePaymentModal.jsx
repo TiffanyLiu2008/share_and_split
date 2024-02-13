@@ -1,7 +1,6 @@
 import './CreatePaymentModal.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkCreatePayment, thunkGetExpensePayments } from '../../redux/payments';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
@@ -9,7 +8,6 @@ import { thunkGetExpenseDetails } from '../../redux/expenses';
 function CreatePaymentModal(expense) {
   const expenseId = expense.expense.id;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [borrower_username, setBorrowerUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -24,12 +22,10 @@ function CreatePaymentModal(expense) {
       await dispatch(thunkCreatePayment(expenseId, formData));
       await dispatch(thunkGetExpensePayments(expenseId));
       await dispatch(thunkGetExpenseDetails(expenseId));
-    } catch (error) {
-      console.error('Creating payment error', error);
-      setErrors({ backendError: 'Username is invalid' });
-    } finally {
       closeModal();
-      navigate(`/expenses/${expenseId}`);
+    } catch (error) {
+      setErrors({backendError: 'Username is invalid'});
+    } finally {
       setIsLoading(false);
     }
   };

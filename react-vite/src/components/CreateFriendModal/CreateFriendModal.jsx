@@ -1,13 +1,11 @@
 import './CreateFriendModal.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkCreateFriend, thunkGetAllFriends } from '../../redux/friends';
 
 function CreateFriendModal() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [friend_username, setFriendUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -21,12 +19,10 @@ function CreateFriendModal() {
     try {
       await dispatch(thunkCreateFriend(formData));
       await dispatch(thunkGetAllFriends());
-    } catch (error) {
-      console.error('Creating friend error', error);
-      setErrors({ backendError: 'Username is invalid' });
-    } finally {
       closeModal();
-      navigate('/friends');
+    } catch (error) {
+      setErrors({backendError:'Username is invalid'});
+    } finally {
       setIsLoading(false);
     }
   };

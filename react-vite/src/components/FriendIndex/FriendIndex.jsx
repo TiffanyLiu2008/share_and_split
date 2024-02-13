@@ -1,5 +1,5 @@
 import './FriendIndex.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllFriends } from '../../redux/friends';
 import FriendIndexItem from '../FriendIndexItem';

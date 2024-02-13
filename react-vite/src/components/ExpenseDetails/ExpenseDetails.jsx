@@ -1,5 +1,5 @@
 import './ExpenseDetails.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
@@ -42,13 +42,14 @@ function ExpenseDetails() {
   const {lender_id, description, category, amount, shared_among, bill_settled, created_at, lender_username} = expense;
   const isLender = sessionUserId === lender_id;
   const convertDate = (oldDate) => {
-    const str = oldDate.split(' ');
-    const month = str[2];
-    const day = str[1];
-    const year = str[3];
-    return `${month} ${day}, ${year}`;
+    const dateObject = new Date(oldDate);
+    const month = dateObject.toLocaleString('en-us', { month: 'short' });
+    const day = dateObject.getDate();
+    const year = dateObject.getFullYear();
+    return `${month} ${day} ${year}`;
   };
   const date = convertDate(created_at);
+  const formattedEachPerson = (amount/shared_among).toFixed(2);
   const needMorePayments = Object.values(payments).length !== shared_among - 1;
 
   return (
@@ -68,7 +69,7 @@ function ExpenseDetails() {
       <p className='expenseDetailCategory'>{category}</p>
       <p className='expenseDetailInfo'>{lender_username} paid ${amount}</p>
       <p className='expenseDetailInfo'>Splitted by:</p>
-      <li className='expenseLenderInfo'>{lender_username} ${amount/shared_among}</li>
+      <li className='expenseLenderInfo'>{lender_username} ${formattedEachPerson}</li>
       {isLender && needMorePayments &&
         <OpenModalMenuItem itemText='People involved' modalComponent={<CreatePaymentModal expense={expense}/>}/>
       }

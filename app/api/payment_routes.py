@@ -13,7 +13,7 @@ def involve_a_payment(payment_id):
     if payment.borrower_id == current_user.id:
         return True
     # As a lender
-    expense = Expense.query.filter(Expense.id == expense_id).first()
+    expense = Expense.query.get(expense_id)
     if expense.lender_id == current_user.id:
         return True
     return False
@@ -49,10 +49,11 @@ def get_my_payments():
 @payment_routes.route('/<int:payment_id>', methods=['PUT'])
 @login_required
 def edit_a_payment(payment_id):
-    payment = Payment.query.filter(Payment.id == payment_id).first()
+    payment = Payment.query.get(payment_id)
+    expense = Expense.query.get(payment.expense_id)
     if not payment:
         return jsonify({'message': 'Payment could not be found'}), 404
-    if involve_a_payment(payment_id) == False:
+    if not expense.lender_id == current_user.id:
         return jsonify({'message': 'Forbidden'}), 403
     form = CreateEditPaymentForm()
     form['csrf_token'].data = request.cookies['csrf_token']

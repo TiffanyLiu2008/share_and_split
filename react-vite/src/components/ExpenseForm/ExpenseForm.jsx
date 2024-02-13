@@ -1,7 +1,7 @@
 import './ExpenseForm.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { thunkCreateExpense, thunkUpdateExpense } from '../../redux/expenses';
 
 function ExpenseForm({expense, formType}) {
@@ -30,7 +30,7 @@ function ExpenseForm({expense, formType}) {
     if (!amount) {
       newErrors.amount = 'Amount is required';
     }
-    if (isNaN(Number(amount)) || Number(amount) < 0) {
+    if (isNaN(Number(amount)) || Number(amount) < 0 || (amount.toString().split('.')[1]?.length > 2)) {
       newErrors.amount = 'Amount is invalid';
     }
     if (!shared_among) {
