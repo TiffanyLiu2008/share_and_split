@@ -29,12 +29,12 @@ function CreateFriendModal() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p className='addFriendHeading'>New friend?</p>
+      <p className='addFriendHeading'>New friend</p>
       <div className='errors'>
         <ul>{errors.backendError}</ul>
       </div>
       <label className='addFriendNormal'>
-        <input className='addFriendNormal' type='text' value={friend_username} placeholder='Username of your friend?' onChange={(e) => setFriendUsername(e.target.value)} required/>
+        <input className='addFriendNormal' type='text' value={friend_username} placeholder='Username of your friend' onChange={(e) => setFriendUsername(e.target.value)} required/>
       </label>
       <button className='submitFriendButton' type='submit'>Submit</button>
     </form>

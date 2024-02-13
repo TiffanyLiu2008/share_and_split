@@ -1,0 +1,36 @@
+.profileButton {
+    width: 50px;
+    height: 50px;
+    padding: 4px;
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.profileButton:hover {
+    background-color: darkgray;
+}
+.info {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: lightblue;
+}
+.logoutButton {
+    width: 70px;
+    height: 25px;
+    padding: 4px;
+    background-color: lightblue;
+    border: 2px solid lightblue;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgray;
+    margin: 4px;
+    cursor: pointer;
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: center;
+    color: white;
+}
+.logoutButton:hover {
+    background-color: lightskyblue;
+}

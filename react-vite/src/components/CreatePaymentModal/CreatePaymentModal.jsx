@@ -32,7 +32,7 @@ function CreatePaymentModal(expense) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p className='createPaymentHeading'>People involved</p>
+      <p className='createPaymentHeading'>Friends involved in this expense</p>
       <div className='errors'>
         <ul>{errors.backendError}</ul>
       </div>

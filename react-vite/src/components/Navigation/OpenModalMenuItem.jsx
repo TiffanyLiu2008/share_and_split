@@ -1,3 +1,4 @@
+import './OpenModalMenuItem.css';
 import { useModal } from '../../context/Modal';
 
 function OpenModalMenuItem({
@@ -15,7 +16,7 @@ function OpenModalMenuItem({
   };
 
   return (
-    <li onClick={onClick}>{itemText}</li>
+    <li className='openModalMenuButton' onClick={onClick}>{itemText}</li>
   );
 }
 

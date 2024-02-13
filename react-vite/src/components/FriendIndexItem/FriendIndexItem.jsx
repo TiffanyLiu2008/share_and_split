@@ -8,7 +8,7 @@ function FriendIndexItem({friend}) {
   return (
     <div>
       <p className='friendUsername'>{username}</p>
-      <OpenModalMenuItem itemText='Remove' modalComponent={<DeleteFriendModal friend={friend}/>}/>
+      <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteFriendModal friend={friend}/>}/>
     </div>
   );
 }

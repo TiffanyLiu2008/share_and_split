@@ -34,9 +34,9 @@ function UpdateComment({eachComment}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p className='commentFormHeading'>Any comments?</p>
+      <p className='commentFormHeading'>Update my comment</p>
       <label className='commentFormNormal'>
-        <textarea className='commentFormNormal' value={commentText} placeholder='Any thoughts?' onChange={(e) => setCommentText(e.target.value)} required/>
+        <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/>
       </label>
       <button className='submitCommentButton' type='submit' disabled={commentText.length === 0}>Submit</button>
     </form>

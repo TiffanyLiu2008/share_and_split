@@ -88,10 +88,10 @@ function ExpenseForm({expense, formType}) {
         <ul>{billSettledError}</ul>
       </div>
       <label className='expenseFormNormal'>
-        Description<br/>
+        Description:<br/>
         <input className='expenseFormNormal' type='text' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} required/><br/>
       </label>
-      Category<br/>
+      Category:<br/>
       <select className='expenseFormNormal' value={category} name='Category' onChange={(e) => setCategory(e.target.value)} required><br/>
         <option>Housing</option>
         <option>Food</option>
@@ -100,7 +100,7 @@ function ExpenseForm({expense, formType}) {
         <option>Others</option>
       </select><br/>
       <label className='expenseFormNormal'>
-        Amount<br/>
+        Amount:<br/>
         <input className='expenseFormNormal' type='text' value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)} required/><br/>
       </label>
       <div className='expenseFormBillSettled'>
@@ -110,7 +110,7 @@ function ExpenseForm({expense, formType}) {
       </div>
       {formType === 'Create Expense' &&
         <label className='expenseFormNormal'>
-          Number of people involved including yourself:<br/>
+          Number of people involved in this expense including yourself:<br/>
           <input className='expenseFormNormal' type='text' value={shared_among} placeholder='Number of people' onChange={(e) => setSharedAmong(e.target.value)} required/><br/>
         </label>
       }

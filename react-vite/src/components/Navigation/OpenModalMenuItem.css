@@ -1,12 +1,6 @@
-.homePageButtons {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-.homePageButton {
-    width: 150px;
-    height: 50px;
+.openModalMenuButton {
+    width: 70px;
+    height: 25px;
     padding: 4px;
     background-color: lightblue;
     border: 2px solid lightblue;
@@ -15,11 +9,10 @@
     margin: 4px;
     cursor: pointer;
     font-family: montserrat;
-    font-size: 14pt;
+    font-size: 12pt;
     text-align: center;
     color: white;
-
 }
-.homePageButton:hover {
+.openModalMenuButton:hover {
     background-color: lightskyblue;
 }

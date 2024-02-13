@@ -15,11 +15,11 @@ function HomePage() {
         </div>
       }
       {sessionUserId &&
-        <div>
-          <Link to={'/expenses/new'}><button className='addExpenseButton'>Add an expense</button></Link>
-          <Link to={'/expenses'}><button className='myExpensesButton'>My expenses</button></Link>
-          <Link to={'/payments'}><button className='myPaymentsButton'>My payments</button></Link>
-          <Link to={'/friends'}><button className='myFriendsButton'>My friends</button></Link>
+        <div className='homePageButtons'>
+          <Link to={'/expenses/new'}><button className='homePageButton'>Add an expense</button></Link><br/>
+          <Link to={'/expenses'}><button className='homePageButton'>My expenses</button></Link><br/>
+          <Link to={'/payments'}><button className='homePageButton'>My payments</button></Link><br/>
+          <Link to={'/friends'}><button className='homePageButton'>My friends</button></Link><br/>
         </div>
       }
     </div>

@@ -1,3 +1,4 @@
+import "./ProfileButton.css";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkLogout } from "../../redux/session";
@@ -39,37 +40,35 @@ function ProfileButton() {
   };
 
   return (
-    <>
-      <button onClick={toggleMenu}>
-        <i className="fas fa-user-circle" />
+    <div>
+      <button className='profileButton' onClick={toggleMenu}>
+        <i className="fas fa-user-circle" style={{fontSize: "33px"}}/>
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
-                <button onClick={logout}>Log Out</button>
-              </li>
+              <p className='info'>{user.username}</p>
+              <p className='info'>{user.email}</p>
+              <button className='logoutButton' onClick={logout}>Log Out</button>
             </>
           ) : (
             <>
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
+                modalComponent={<LoginFormModal/>}
               />
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
+                modalComponent={<SignupFormModal/>}
               />
             </>
           )}
         </ul>
       )}
-    </>
+    </div>
   );
 }
 
