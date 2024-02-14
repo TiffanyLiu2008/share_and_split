@@ -21,7 +21,7 @@ function DeleteFriendModal({friend}) {
 
   return (
     <div>
-      <p className='heading'>Delete this friend?</p>
+      <p className='deleteFriendHeading'>Delete this friend?</p>
       <button className='deleteFriendYes' onClick={handleDelete}>Yes please</button><br/>
       <button className='deleteFriendNo' onClick={closeModal}>Not yet</button>
     </div>

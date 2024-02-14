@@ -78,7 +78,7 @@ function ExpenseForm({expense, formType}) {
   const billSettledError = errors.bill_settled ? `Status of bill: ${errors.bill_settled}` : null;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='expenseForm' onSubmit={handleSubmit}>
       <p className='expenseFormHeading'>{title}</p>
       <div className='errors'>
         <ul>{descriptionError}</ul>
@@ -87,11 +87,13 @@ function ExpenseForm({expense, formType}) {
         <ul>{sharedAmongError}</ul>
         <ul>{billSettledError}</ul>
       </div>
-      <label className='expenseFormNormal'>
+      <label className='expenseFormLabel'>
         Description:<br/>
         <input className='expenseFormNormal' type='text' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} required/><br/>
       </label>
-      Category:<br/>
+      <label className='expenseFormLabel'>
+        Category:<br/>
+      </label>
       <select className='expenseFormNormal' value={category} name='Category' onChange={(e) => setCategory(e.target.value)} required><br/>
         <option>Housing</option>
         <option>Food</option>
@@ -99,22 +101,22 @@ function ExpenseForm({expense, formType}) {
         <option>Entertainment</option>
         <option>Others</option>
       </select><br/>
-      <label className='expenseFormNormal'>
+      <label className='expenseFormLabel'>
         Amount:<br/>
         <input className='expenseFormNormal' type='text' value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)} required/><br/>
       </label>
-      <div className='expenseFormBillSettled'>
+      <div className='expenseFormLabel'>
         Bill settled?<br/>
         <input type='radio' value='True' checked={bill_settled === 'True'} onChange={onStatusChange} required/>Yes
         <input type='radio' value='False' checked={bill_settled === 'False'} onChange={onStatusChange} required/>No
       </div>
       {formType === 'Create Expense' &&
-        <label className='expenseFormNormal'>
+        <label className='expenseFormLabel'>
           Number of people involved in this expense including yourself:<br/>
           <input className='expenseFormNormal' type='text' value={shared_among} placeholder='Number of people' onChange={(e) => setSharedAmong(e.target.value)} required/><br/>
         </label>
       }
-      <button className='submitExpenseButton' type='submit'>{title}</button>
+      <button className='expenseFormButton' type='submit'>{title}</button>
     </form>
   );
 }

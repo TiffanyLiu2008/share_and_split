@@ -26,7 +26,7 @@ function SettlePaymentModal({payment}) {
 
   return (
     <div>
-      <p className='heading'>Settle payment?</p>
+      <p className='settlePaymentHeading'>Settle payment?</p>
       <button className='settlePaymentYes' onClick={handleSubmit}>Yes please</button><br/>
       <button className='settlePaymentNo' onClick={closeModal}>Not yet</button>
     </div>

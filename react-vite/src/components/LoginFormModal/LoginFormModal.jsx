@@ -34,33 +34,34 @@ function LoginFormModal() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button className='logInButton' type="submit">Log In</button>
-        <button className='logInButton' type='submit' onClick={handleDemo}>Log In as Demo User</button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <p className='logInHeading'>Log In</p>
+      {errors.email && <p className='errors'>{errors.email}</p>}<br/>
+      {errors.password && <p className='errors'>{errors.password}</p>}<br/>
+      <label className='logInLabel'>
+        Email<br/>
+        <input
+          className='logInNormal'
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        /><br/>
+      </label>
+      <label className='logInLabel'>
+        Password<br/>
+        <input
+          className='logInNormal'
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        /><br/>
+      </label>
+      <button className='logInButton' type="submit">Log In</button><br/>
+      <button className='demoButton' type='submit' onClick={handleDemo}>Log In as Demo User</button><br/>
+      <button className='cancelButton' onClick={closeModal}>Cancel</button>
+    </form>
   );
 }
 

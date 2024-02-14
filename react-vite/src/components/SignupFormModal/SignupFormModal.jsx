@@ -39,53 +39,56 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        {errors.username && <p>{errors.username}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <p className='signUpHeading'>Sign Up</p>
+      {errors.server && <p className='errors'>{errors.server}</p>}<br/>
+      {errors.email && <p className='errors'>{errors.email}</p>}<br/>
+      {errors.username && <p className='errors'>{errors.username}</p>}<br/>
+      {errors.password && <p className='errors'>{errors.password}</p>}<br/>
+      {errors.confirmPassword && <p className='errors'>{errors.confirmPassword}</p>}<br/>
+      <label className='signUpLabel'>
+        Email<br/>
+        <input
+          className='signUpNormal'
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        /><br/>
+      </label><br/>
+      <label className='signUpLabel'>
+        Username<br/>
+        <input
+          className='signUpNormal'
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        /><br/>
+      </label>
+      <label className='signUpLabel'>
+        Password<br/>
+        <input
+          className='signUpNormal'
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        /><br/>
+      </label>
+      <label className='signUpLabel'>
+        Confirm Password<br/>
+        <input
+          className='signUpNormal'
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        /><br/>
+      </label>
+      <button className='signUpButton' type="submit">Sign Up</button><br/>
+      <button className='cancelButton' onClick={closeModal}>Cancel</button>
+    </form>
   );
 }
 

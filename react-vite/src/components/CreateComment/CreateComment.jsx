@@ -32,10 +32,11 @@ function CreateComment({expenseId}) {
   return (
     <form onSubmit={handleSubmit}>
       <p className='commentFormHeading'>Create a comment</p>
-      <label className='commentFormNormal'>
-        <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/>
+      <label>
+        <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/><br/>
       </label>
       <button className='submitCommentButton' type='submit' disabled={commentText.length === 0}>Submit</button>
+      <button className='cancelButton' onClick={closeModal}>Cancel</button>
     </form>
   );
 }

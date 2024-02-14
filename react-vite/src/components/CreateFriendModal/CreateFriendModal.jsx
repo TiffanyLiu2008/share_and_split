@@ -33,10 +33,11 @@ function CreateFriendModal() {
       <div className='errors'>
         <ul>{errors.backendError}</ul>
       </div>
-      <label className='addFriendNormal'>
+      <label>
         <input className='addFriendNormal' type='text' value={friend_username} placeholder='Username of your friend' onChange={(e) => setFriendUsername(e.target.value)} required/>
       </label>
       <button className='submitFriendButton' type='submit'>Submit</button>
+      <button className='cancelButton' onClick={closeModal}>Cancel</button>
     </form>
   );
 }

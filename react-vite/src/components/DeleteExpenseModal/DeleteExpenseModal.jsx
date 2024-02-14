@@ -24,7 +24,7 @@ function DeleteExpenseModal({expense}) {
 
   return (
     <div>
-      <p className='heading'>Delete this expense?</p>
+      <p className='deleteExpenseHeading'>Delete this expense?</p>
       <button className='deleteExpenseYes' onClick={handleDelete}>Yes please</button><br/>
       <button className='deleteExpenseNo' onClick={closeModal}>Not yet</button>
     </div>

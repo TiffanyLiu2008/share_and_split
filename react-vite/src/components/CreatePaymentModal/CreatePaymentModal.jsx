@@ -32,14 +32,15 @@ function CreatePaymentModal(expense) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p className='createPaymentHeading'>Friends involved in this expense</p>
+      <p className='createPaymentHeading'>Friend involved in this expense</p>
       <div className='errors'>
         <ul>{errors.backendError}</ul>
       </div>
-      <label className='createPaymentNormal'>
+      <label>
         <input className='createPaymentNormal' type='text' value={borrower_username} placeholder='Username of your friend' onChange={(e) => setBorrowerUsername(e.target.value)} required/>
       </label>
-      <button className='submitPaymentButton' type='submit'>Submit</button>
+      <button className='createPaymentButton' type='submit'>Submit</button>
+      <button className='cancelButton' onClick={closeModal}>Cancel</button>
     </form>
   );
 }

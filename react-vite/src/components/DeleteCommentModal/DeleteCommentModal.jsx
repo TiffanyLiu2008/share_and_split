@@ -22,7 +22,7 @@ function DeleteCommentModal({eachComment}) {
 
   return (
     <div>
-      <p className='heading'>Delete this comment?</p>
+      <p className='deleteCommentHeading'>Delete this comment?</p>
       <button className='deleteCommentYes' onClick={handleDelete}>Yes please</button><br/>
       <button className='deleteCommentNo' onClick={closeModal}>Not yet</button>
     </div>

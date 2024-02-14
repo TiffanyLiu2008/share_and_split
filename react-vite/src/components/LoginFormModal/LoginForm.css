@@ -1,0 +1,86 @@
+.logInHeading {
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: center;
+    color: darkgray;
+    padding: 4px;
+}
+.logInLabel {
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: left;
+    color: darkgray;
+    padding: 4px;
+}
+.logInNormal {
+    width: 90%;
+    height: 50px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgray;
+    margin: 4px;
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: left;
+    color: darkgray;
+}
+.errors {
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: left;
+    color: lightcoral;
+}
+.logInButton {
+    width: 150px;
+    height: 50px;
+    padding: 4px;
+    background-color: lightblue;
+    border: 2px solid lightblue;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgray;
+    margin: 4px;
+    cursor: pointer;
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: center;
+    color: white;
+}
+.logInButton:hover {
+    background-color: lightskyblue;
+}
+.demoButton {
+    width: 150px;
+    height: 50px;
+    padding: 4px;
+    background-color: lightcoral;
+    border: 2px solid lightcoral;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgray;
+    margin: 4px;
+    cursor: pointer;
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: center;
+    color: white;
+}
+.demoButton:hover {
+    background-color: lightsalmon;
+}
+.cancelButton {
+    width: 150px;
+    height: 50px;
+    padding: 4px;
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgray;
+    margin: 4px;
+    cursor: pointer;
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: center;
+    color: white;
+}
+.cancelButton:hover {
+    background-color: lightslategray;
+}
