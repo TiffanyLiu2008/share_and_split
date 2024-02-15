@@ -1,0 +1,12 @@
+.expenseCommentsIndexHeading {
+    font-family: montserrat;
+    font-size: 16pt;
+    text-align: left;
+    color: darkgray;
+    font-weight: bold;
+}
+.expenseCommentsIndex {
+    width: 600px;
+    margin: auto;
+    list-style-type: none;
+}

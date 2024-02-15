@@ -26,11 +26,11 @@ function ExpenseCommentsIndex() {
 
   return (
     <div>
-      <p className='heading'>Comments:</p>
+      <p className='expenseCommentsIndexHeading'>Comments:</p>
       <OpenModalMenuItem itemText='Add' modalComponent={<CreateComment expenseId={expenseId}/>}/>
       <ul className='expenseCommentsIndex'>
         {Object.values(comments).map((comment) => (
-          <li className='eachComment' key={comment.id}>
+          <li>
             <ExpenseCommentsIndexItem eachComment={comment} key={comment.id}/>
           </li>
         ))}

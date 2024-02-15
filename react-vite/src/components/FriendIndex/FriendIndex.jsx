@@ -23,15 +23,15 @@ function FriendIndex() {
   if (isLoading) return (<>Loading...</>);
 
   return (
-    <div>
+    <div className='friendIndex'>
+      <OpenModalMenuItem itemText='Add' modalComponent={<CreateFriendModal/>}/>
       <ul className='friendIndex'>
         {friends.map((friend) => (
-          <li className='eachFriend' key={friend.Id}>
+          <li>
             <FriendIndexItem friend={friend} key={friend.Id}/>
           </li>
         ))}
       </ul>
-      <OpenModalMenuItem itemText='Add' modalComponent={<CreateFriendModal/>}/>
     </div>
   );
 }

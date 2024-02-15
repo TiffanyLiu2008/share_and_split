@@ -11,15 +11,15 @@ function ExpenseCommentsIndexItem({eachComment}) {
   const isCreator = sessionUserId === creator_id;
   const convertDate = (oldDate) => {
     const dateObject = new Date(oldDate);
-    const month = dateObject.toLocaleString('en-us', { month: 'short' });
+    const month = dateObject.toLocaleString('en-us', { month: 'long' });
     const day = dateObject.getDate();
     const year = dateObject.getFullYear();
-    return `${month} ${day} ${year}`;
+    return `${month} ${day}, ${year}`;
   };
   const date = convertDate(updated_at);
 
   return (
-    <div>
+    <div className='eachComment'>
       <p className='commentContent'>{comment}</p>
       <p className='commentCreatorUsername'>{creator_username}</p>
       <p className='commentCreatedAt'>{date}</p>

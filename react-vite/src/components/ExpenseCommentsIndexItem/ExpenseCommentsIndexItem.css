@@ -1,0 +1,31 @@
+.eachComment {
+    width: 60%;
+    height: 200px;
+    padding: 10px;
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightgray;
+    margin: 20px;
+}
+.eachComment:hover {
+    background-color: lightslategray;
+}
+.commentContent {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: white;
+}
+.commentCreatorUsername {
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: right;
+    color: white;
+}
+.commentCreatedAt {
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: right;
+    color: white;
+}

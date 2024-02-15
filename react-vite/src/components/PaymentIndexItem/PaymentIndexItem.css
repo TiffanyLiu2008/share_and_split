@@ -1,0 +1,38 @@
+.eachPayment {
+    width: 60%;
+    height: 140px;
+    padding: 10px;
+    background-color: lightgray;;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightgray;
+    margin: 20px;
+}
+.eachPayment:hover {
+    background-color: lightslategray;
+}
+.paymentCreatedAt {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: white;
+}
+.paymentBorrowed {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: lightcoral;
+    font-weight: bold;
+}
+.paymentLent {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: white;
+}
+.paymentSettled {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: darkgrey;
+}

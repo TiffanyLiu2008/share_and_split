@@ -1,0 +1,20 @@
+.eachFriend {
+    width: 60%;
+    height: 120px;
+    padding: 10px;
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightgray;
+    margin: 20px;
+}
+.eachFriend:hover {
+    background-color: lightslategray;
+}
+.friendUsername {
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}

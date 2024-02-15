@@ -26,7 +26,7 @@ function ExpensePaymentsIndex() {
     <div>
       <ul className='expensePaymentsIndex'>
         {Object.values(payments).map((payment) => (
-          <li className='eachPayment' key={payment.id}>
+          <li>
             <ExpensePaymentsIndexItem payment={payment} key={payment.id}/>
           </li>
         ))}

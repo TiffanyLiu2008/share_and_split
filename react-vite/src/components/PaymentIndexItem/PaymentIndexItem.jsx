@@ -10,34 +10,33 @@ function PaymentIndexItem({payment}) {
   const isBorrower = sessionUserId === borrower_id;
   const convertDate = (oldDate) => {
     const dateObject = new Date(oldDate);
-    const month = dateObject.toLocaleString('en-us', { month: 'short' });
+    const month = dateObject.toLocaleString('en-us', { month: 'long' });
     const day = dateObject.getDate();
     const year = dateObject.getFullYear();
-    return `${month} ${day} ${year}`;
+    return `${month} ${day}, ${year}`;
   };
   const date = convertDate(updated_at);
   const formattedEachPerson = each_person.toFixed(2);
 
   return (
-    <div>
-      <p className='paymentPaymentMade'>{payment_made}</p>
+    <div className='eachPayment'>
       <p className='paymentCreatedAt'>{date}</p>
       {isBorrower && !payment_made &&
         <div>
-          <p className='paymentInfo'>You owe {lender_username} ${formattedEachPerson}</p>
+          <p className='paymentBorrowed'>You owe {lender_username} ${formattedEachPerson}</p>
         </div>
       }
       {!isBorrower && !payment_made &&
         <div>
-          <p className='paymentInfo'>{borrower_username} owes you ${formattedEachPerson}</p>
-          <OpenModalMenuItem itemText='settle' modalComponent={<SettlePaymentModal payment={payment}/>}/>
+          <p className='paymentLent'>{borrower_username} owes you ${formattedEachPerson}</p>
+          <OpenModalMenuItem itemText='Settle' modalComponent={<SettlePaymentModal payment={payment}/>}/>
         </div>
       }
       {isBorrower && payment_made &&
-        <p className='paymentInfo'>Made ${formattedEachPerson} to {lender_username} settled</p>
+        <p className='paymentSettled'>Made ${formattedEachPerson} to {lender_username} (settled)</p>
       }
       {!isBorrower && payment_made &&
-        <p className='paymentInfo'>Received ${formattedEachPerson} from {borrower_username} settled</p>
+        <p className='paymentSettled'>Received ${formattedEachPerson} from {borrower_username} (settled)</p>
       }
     </div>
   );

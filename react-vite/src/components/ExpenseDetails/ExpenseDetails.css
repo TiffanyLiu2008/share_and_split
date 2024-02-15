@@ -1,0 +1,63 @@
+.expenseDetails {
+    width: 600px;
+    margin: auto;
+    list-style-type: none;
+}
+.updateExpenseButton {
+    width: 132px;
+    height: 37px;
+    padding: 4px;
+    background-color: lightblue;
+    border: 2px solid lightblue;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgray;
+    margin: 4px;
+    cursor: pointer;
+    font-family: montserrat;
+    font-size: 12pt;
+    text-align: center;
+    color: white;
+}
+.updateExpenseButton:hover {
+    background-color: lightskyblue;
+}
+.expenseDetailsBillSettled {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: darkgray;
+    font-weight: bold;
+}
+.expenseDetailsCreatedAt {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: darkgray;
+}
+.expenseDetailsDescription {
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: left;
+    color: darkgray;
+    font-weight: bold;
+}
+.expenseDetailsCategory {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: darkgray;
+    font-weight: bold;
+}
+.expenseDetailsLender{
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: left;
+    color: darkslategray;
+    font-weight: bold;
+}
+.expenseDetailsInfo{
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: darkgrey;
+}

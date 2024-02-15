@@ -9,27 +9,27 @@ function ExpenseIndexItem({expense}) {
   const isLender = sessionUserId === lender_id;
   const convertDate = (oldDate) => {
     const dateObject = new Date(oldDate);
-    const month = dateObject.toLocaleString('en-us', { month: 'short' });
+    const month = dateObject.toLocaleString('en-us', { month: 'long' });
     const day = dateObject.getDate();
     const year = dateObject.getFullYear();
-    return `${month} ${day} ${year}`;
+    return `${month} ${day}, ${year}`;
   };
   const date = convertDate(created_at);
   const formattedEachPerson = each_person.toFixed(2);
 
   return (
-    <div>
-      <Link to={`/expenses/${expense.id}`}>
+    <div className='eachExpense'>
+      <Link className='linkToExpense' to={`/expenses/${expense.id}`}>
         <p className='expenseCreatedAt'>{date}</p>
         <p className='expenseDescription'>{description}</p>
         {!isLender && !bill_settled &&
-          <p className='expenseInfo'>You borrowed ${formattedEachPerson}</p>
+          <p className='expenseBorrowed'>You borrowed ${formattedEachPerson}</p>
         }
         {isLender && !bill_settled &&
-          <p className='expenseInfo'>You paid ${amount} for {shared_among} people</p>
+          <p className='expenseLent'>You paid ${amount} for {shared_among} people</p>
         }
         {bill_settled &&
-          <p className='expenseInfo'>${formattedEachPerson} (settled)</p>
+          <p className='expenseSettled'>${formattedEachPerson} (settled)</p>
         }
       </Link>
     </div>

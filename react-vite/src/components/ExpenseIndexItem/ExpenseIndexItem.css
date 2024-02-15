@@ -1,0 +1,51 @@
+.eachExpense {
+    width: 60%;
+    height: 150px;
+    padding: 10px;
+    background-color: lightblue;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightgray;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.eachExpense:hover {
+    background-color: lightskyblue;
+}
+.linkToExpense {
+    text-decoration: none;
+}
+.expenseCreatedAt {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: white;
+}
+.expenseDescription {
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+}
+.expenseBorrowed {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: lightcoral;
+    font-weight: bold;
+}
+.expenseLent {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: white;
+}
+.expenseSettled {
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: left;
+    color: darkgrey;
+}

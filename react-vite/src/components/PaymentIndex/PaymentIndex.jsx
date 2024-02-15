@@ -24,7 +24,7 @@ function PaymentIndex() {
     <div>
       <ul className='paymentIndex'>
         {payments.map((payment) => (
-          <li className='eachPayment' key={payment.Id}>
+          <li>
             <PaymentIndexItem payment={payment} key={payment.id}/>
           </li>
         ))}

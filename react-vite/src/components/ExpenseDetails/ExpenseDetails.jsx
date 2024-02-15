@@ -43,38 +43,38 @@ function ExpenseDetails() {
   const isLender = sessionUserId === lender_id;
   const convertDate = (oldDate) => {
     const dateObject = new Date(oldDate);
-    const month = dateObject.toLocaleString('en-us', { month: 'short' });
+    const month = dateObject.toLocaleString('en-us', { month: 'long' });
     const day = dateObject.getDate();
     const year = dateObject.getFullYear();
-    return `${month} ${day} ${year}`;
+    return `${month} ${day}, ${year}`;
   };
   const date = convertDate(created_at);
+  const formattedAmount = amount.toFixed(2);
   const formattedEachPerson = (amount/shared_among).toFixed(2);
   const needMorePayments = Object.values(payments).length !== shared_among - 1;
 
   return (
-    <div>
+    <div className='expenseDetails'>
       {isLender && !bill_settled &&
         <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
       }
       {isLender && bill_settled &&
-        <p>settled</p>
+        <p className='expenseDetailsBillSettled'>SETTLED</p>
       }
       {isLender &&
         <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteExpenseModal expense={expense}/>}/>
       }
-      <p className='expenseDetailBillSettled'>{bill_settled}</p>
-      <p className='expenseDetailCreatedAt'>{date}</p>
-      <p className='expenseDetailDescription'>{description}</p>
-      <p className='expenseDetailCategory'>{category}</p>
-      <p className='expenseDetailInfo'>{lender_username} paid ${amount}</p>
-      <p className='expenseDetailInfo'>Splitted by:</p>
-      <li className='expenseLenderInfo'>{lender_username} ${formattedEachPerson}</li>
+      <p className='expenseDetailsCreatedAt'>{date}</p>
+      <p className='expenseDetailsDescription'>{description}</p>
+      <p className='expenseDetailsCategory'>{category}</p>
+      <p className='expenseDetailsLender'>{lender_username} paid ${formattedAmount}</p>
+      <p className='expenseDetailsInfo'>Splitted by:</p>
+      <li className='expenseDetailsInfo'>{lender_username} ${formattedEachPerson}</li>
       {isLender && needMorePayments &&
         <OpenModalMenuItem itemText='People involved' modalComponent={<CreatePaymentModal expense={expense}/>}/>
       }
-      <ExpensePaymentsIndex className='eachPayment'/>
-      <ExpenseCommentsIndex className='eachComment'/>
+      <ExpensePaymentsIndex/>
+      <ExpenseCommentsIndex/>
     </div>
   );
 }

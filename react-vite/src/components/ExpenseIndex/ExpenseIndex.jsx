@@ -24,7 +24,7 @@ function ExpenseIndex() {
     <div>
       <ul className='expenseIndex'>
         {expenses.map((expense) => (
-          <li className='eachExpense' key={expense.Id}>
+          <li>
             <ExpenseIndexItem expense={expense} key={expense.Id}/>
           </li>
         ))}

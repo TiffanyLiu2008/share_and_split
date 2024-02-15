@@ -6,7 +6,7 @@ function FriendIndexItem({friend}) {
   const {username} = friend;
 
   return (
-    <div>
+    <div className='eachFriend'>
       <p className='friendUsername'>{username}</p>
       <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteFriendModal friend={friend}/>}/>
     </div>
