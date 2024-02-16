@@ -1,25 +1,10 @@
-.homePageButtons {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+.homePage {
+    display: flex;
+    justify-content: flex-start;
 }
-.homePageButton {
-    width: 150px;
-    height: 50px;
-    padding: 4px;
-    background-color: lightblue;
-    border: 2px solid lightblue;
-    border-radius: 4px;
-    box-shadow: 2px 2px lightgray;
-    margin: 4px;
-    cursor: pointer;
-    font-family: montserrat;
-    font-size: 14pt;
-    text-align: center;
-    color: white;
-
-}
-.homePageButton:hover {
-    background-color: lightskyblue;
+.mainContent {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

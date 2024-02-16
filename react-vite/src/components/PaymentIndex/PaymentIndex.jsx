@@ -2,6 +2,7 @@ import './PaymentIndex.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllPayments } from '../../redux/payments';
+import SideNavigation from '../Navigation/SideNavigation';
 import PaymentIndexItem from '../PaymentIndexItem';
 
 function PaymentIndex() {
@@ -21,8 +22,9 @@ function PaymentIndex() {
   if (isLoading) return (<>Loading...</>);
 
   return (
-    <div>
-      <ul className='paymentIndex'>
+    <div className='paymentIndex'>
+      <SideNavigation/>
+      <ul className='mainContent'>
         {payments.map((payment) => (
           <li>
             <PaymentIndexItem payment={payment} key={payment.id}/>

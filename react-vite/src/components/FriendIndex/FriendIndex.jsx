@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllFriends } from '../../redux/friends';
 import FriendIndexItem from '../FriendIndexItem';
+import SideNavigation from '../Navigation/SideNavigation';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import CreateFriendModal from '../CreateFriendModal';
 
@@ -24,8 +25,9 @@ function FriendIndex() {
 
   return (
     <div className='friendIndex'>
+      <SideNavigation/>
+      <ul className='mainContent'>
       <OpenModalMenuItem itemText='Add' modalComponent={<CreateFriendModal/>}/>
-      <ul className='friendIndex'>
         {friends.map((friend) => (
           <li>
             <FriendIndexItem friend={friend} key={friend.Id}/>

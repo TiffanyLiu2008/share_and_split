@@ -50,5 +50,5 @@
     color: white;
 }
 .expenseFormButton:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }

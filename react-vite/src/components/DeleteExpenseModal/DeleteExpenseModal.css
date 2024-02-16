@@ -21,7 +21,7 @@
     color: white;
 }
 .deleteExpenseYes:hover {
-    background-color: lightsalmon;
+    opacity: 0.5;
 }
 .deleteExpenseNo {
     width: 150px;
@@ -39,5 +39,5 @@
     color: white;
 }
 .deleteExpenseNo:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }

@@ -1,5 +1,5 @@
 .eachExpense {
-    width: 60%;
+    width: 400px;
     height: 150px;
     padding: 10px;
     background-color: lightblue;
@@ -12,7 +12,7 @@
     cursor: pointer;
 }
 .eachExpense:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }
 .linkToExpense {
     text-decoration: none;

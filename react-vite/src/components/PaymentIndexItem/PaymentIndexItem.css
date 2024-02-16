@@ -1,15 +1,15 @@
 .eachPayment {
-    width: 60%;
+    width: 400px;
     height: 140px;
     padding: 10px;
-    background-color: lightgray;;
-    border: 2px solid lightgray;
+    background-color: lightgray;
+    border: 2px solid lightblue;
     border-radius: 10px;
-    box-shadow: 5px 5px lightgray;
+    box-shadow: 5px 5px lightblue;
     margin: 20px;
 }
 .eachPayment:hover {
-    background-color: lightslategray;
+    opacity: 0.5;
 }
 .paymentCreatedAt {
     font-family: montserrat;

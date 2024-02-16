@@ -6,7 +6,6 @@
     font-weight: bold;
 }
 .expenseCommentsIndex {
-    width: 600px;
-    margin: auto;
+    margin: 20px;
     list-style-type: none;
 }

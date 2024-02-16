@@ -1,18 +1,24 @@
-.openModalMenuButton {
-    width: 120px;
-    height: 25px;
+.sideNav {
+    width: 200px;
+    background-color: white;
+    padding: 20px;
+}
+.sideNavButton {
+    display: block;
+    height: 50px;
     padding: 4px;
     background-color: lightblue;
     border: 2px solid lightblue;
     border-radius: 4px;
     box-shadow: 2px 2px lightgray;
-    margin: 4px;
+    margin: 10px;
     cursor: pointer;
     font-family: montserrat;
-    font-size: 12pt;
+    font-size: 16pt;
     text-align: center;
+    text-decoration: none;
     color: white;
 }
-.openModalMenuButton:hover {
+.sideNavButton:hover {
     opacity: 0.5;
 }

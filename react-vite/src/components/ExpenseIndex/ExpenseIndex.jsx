@@ -2,6 +2,7 @@ import './ExpenseIndex.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllExpenses } from '../../redux/expenses';
+import SideNavigation from '../Navigation/SideNavigation';
 import ExpenseIndexItem from '../ExpenseIndexItem';
 
 function ExpenseIndex() {
@@ -21,8 +22,9 @@ function ExpenseIndex() {
   if (isLoading) return (<>Loading...</>);
 
   return (
-    <div>
-      <ul className='expenseIndex'>
+    <div className='expenseIndex'>
+      <SideNavigation/>
+      <ul className='mainContent'>
         {expenses.map((expense) => (
           <li>
             <ExpenseIndexItem expense={expense} key={expense.Id}/>

@@ -21,7 +21,7 @@
     color: white;
 }
 .deleteFriendYes:hover {
-    background-color: lightsalmon;
+    opacity: 0.5;
 }
 .deleteFriendNo {
     width: 150px;
@@ -39,5 +39,5 @@
     color: white;
 }
 .deleteFriendNo:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }

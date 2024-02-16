@@ -1,15 +1,15 @@
 .eachFriend {
-    width: 60%;
+    width: 200px;
     height: 120px;
     padding: 10px;
     background-color: lightgray;
-    border: 2px solid lightgray;
+    border: 2px solid lightblue;
     border-radius: 10px;
-    box-shadow: 5px 5px lightgray;
+    box-shadow: 5px 5px lightblue;
     margin: 20px;
 }
 .eachFriend:hover {
-    background-color: lightslategray;
+    opacity: 0.5;
 }
 .friendUsername {
     font-family: montserrat;

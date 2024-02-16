@@ -1,7 +1,12 @@
 .expenseDetails {
-    width: 600px;
-    margin: auto;
-    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+}
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .updateExpenseButton {
     width: 132px;
@@ -19,7 +24,7 @@
     color: white;
 }
 .updateExpenseButton:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }
 .expenseDetailsBillSettled {
     font-family: montserrat;

@@ -7,9 +7,9 @@ import logoImg from '../../../../images/logo.jpg';
 function Navigation() {
 
   return (
-    <div className='nav'>
+    <div className='topNav'>
+      <NavLink to="/"><img className='topNavLogo' src={logoImg} alt='logo'/></NavLink>
       <ProfileButton/>
-      <NavLink to="/"><img className='navLogo' src={logoImg} alt='logo'/></NavLink>
     </div>
   );
 }

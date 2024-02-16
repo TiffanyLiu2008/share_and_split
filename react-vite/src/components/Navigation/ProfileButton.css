@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 .profileButton:hover {
-    background-color: darkgray;
+    opacity: 0.5;
 }
 .info {
     font-family: montserrat;
@@ -32,5 +32,5 @@
     color: white;
 }
 .logoutButton:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }

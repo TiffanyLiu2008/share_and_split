@@ -71,11 +71,11 @@ function ExpenseForm({expense, formType}) {
       }
     };
   };
-  const descriptionError = errors.description ? `Description: ${errors.description}` : null;
-  const categoryError = errors.category ? `Category: ${errors.category}` : null;
-  const amountError = errors.amount ? `Amount: ${errors.amount}` : null;
-  const sharedAmongError = errors.shared_among ? `Number of people: ${errors.shared_among}` : null;
-  const billSettledError = errors.bill_settled ? `Status of bill: ${errors.bill_settled}` : null;
+  const descriptionError = errors.description ? `${errors.description}` : null;
+  const categoryError = errors.category ? `${errors.category}` : null;
+  const amountError = errors.amount ? `${errors.amount}` : null;
+  const sharedAmongError = errors.shared_among ? `${errors.shared_among}` : null;
+  const billSettledError = errors.bill_settled ? `${errors.bill_settled}` : null;
 
   return (
     <form className='expenseForm' onSubmit={handleSubmit}>

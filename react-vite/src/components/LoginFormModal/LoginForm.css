@@ -46,7 +46,7 @@
     color: white;
 }
 .logInButton:hover {
-    background-color: lightskyblue;
+    opacity: 0.5;
 }
 .demoButton {
     width: 150px;
@@ -64,16 +64,16 @@
     color: white;
 }
 .demoButton:hover {
-    background-color: lightsalmon;
+    opacity: 0.5;
 }
 .cancelButton {
     width: 150px;
     height: 50px;
     padding: 4px;
     background-color: lightgray;
-    border: 2px solid lightgray;
+    border: 2px solid lightblue;
     border-radius: 4px;
-    box-shadow: 2px 2px lightgray;
+    box-shadow: 2px 2px lightblue;
     margin: 4px;
     cursor: pointer;
     font-family: montserrat;
@@ -82,5 +82,5 @@
     color: white;
 }
 .cancelButton:hover {
-    background-color: lightslategray;
+    opacity: 0.5;
 }

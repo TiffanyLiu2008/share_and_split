@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 import { thunkGetExpensePayments } from '../../redux/payments';
+import SideNavigation from '../Navigation/SideNavigation';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteExpenseModal from '../DeleteExpenseModal';
 import ExpensePaymentsIndex from '../ExpensePaymentsIndex';
@@ -55,26 +56,29 @@ function ExpenseDetails() {
 
   return (
     <div className='expenseDetails'>
-      {isLender && !bill_settled &&
-        <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
-      }
-      {isLender && bill_settled &&
-        <p className='expenseDetailsBillSettled'>SETTLED</p>
-      }
-      {isLender &&
-        <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteExpenseModal expense={expense}/>}/>
-      }
-      <p className='expenseDetailsCreatedAt'>{date}</p>
-      <p className='expenseDetailsDescription'>{description}</p>
-      <p className='expenseDetailsCategory'>{category}</p>
-      <p className='expenseDetailsLender'>{lender_username} paid ${formattedAmount}</p>
-      <p className='expenseDetailsInfo'>Splitted by:</p>
-      <li className='expenseDetailsInfo'>{lender_username} ${formattedEachPerson}</li>
-      {isLender && needMorePayments &&
-        <OpenModalMenuItem itemText='People involved' modalComponent={<CreatePaymentModal expense={expense}/>}/>
-      }
-      <ExpensePaymentsIndex/>
-      <ExpenseCommentsIndex/>
+      <SideNavigation/>
+      <div className='mainContent'>
+        {isLender && !bill_settled &&
+          <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
+        }
+        {isLender && bill_settled &&
+          <p className='expenseDetailsBillSettled'>SETTLED</p>
+        }
+        {isLender &&
+          <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteExpenseModal expense={expense}/>}/>
+        }
+        <p className='expenseDetailsCreatedAt'>{date}</p>
+        <p className='expenseDetailsDescription'>{description}</p>
+        <p className='expenseDetailsCategory'>{category}</p>
+        <p className='expenseDetailsLender'>{lender_username} paid ${formattedAmount}</p>
+        <p className='expenseDetailsInfo'>Splitted by:</p>
+        <li className='expenseDetailsInfo'>{lender_username} ${formattedEachPerson}</li>
+        {isLender && needMorePayments &&
+          <OpenModalMenuItem itemText='People involved' modalComponent={<CreatePaymentModal expense={expense}/>}/>
+        }
+        <ExpensePaymentsIndex/>
+        <ExpenseCommentsIndex/>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import './CreateExpense.css';
+import SideNavigation from '../Navigation/SideNavigation';
 import ExpenseForm from '../ExpenseForm';
 
 function CreateExpense() {
@@ -10,7 +12,12 @@ function CreateExpense() {
   };
 
   return (
-    <ExpenseForm expense={expense} formType='Create Expense'/>
+    <div className='createExpense'>
+      <SideNavigation/>
+      <div className='mainContent'>
+        <ExpenseForm expense={expense} formType='Create Expense'/>
+      </div>
+    </div>
   );
 }
 

@@ -1,8 +1,10 @@
-import ExpenseForm from '../ExpenseForm';
+import './UpdateExpense.css';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
+import SideNavigation from '../Navigation/SideNavigation';
+import ExpenseForm from '../ExpenseForm';
 
 function UpdateExpense() {
   const dispatch = useDispatch();
@@ -22,8 +24,11 @@ function UpdateExpense() {
   if (isLoading) return (<>Loading...</>);
 
   return (
-    <div>
-      <ExpenseForm expense={expense} formType='Update Expense'/>
+    <div className='updateExpense'>
+      <SideNavigation/>
+      <div className='mainContent'>
+        <ExpenseForm expense={expense} formType='Update Expense'/>
+      </div>
     </div>
   );
 }
