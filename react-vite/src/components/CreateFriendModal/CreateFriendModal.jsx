@@ -28,7 +28,7 @@ function CreateFriendModal() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='addFriendModal' onSubmit={handleSubmit}>
       <p className='addFriendHeading'>New friend</p>
       <div className='errors'>
         <ul>{errors.backendError}</ul>

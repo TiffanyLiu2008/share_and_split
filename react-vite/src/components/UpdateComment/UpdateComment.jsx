@@ -33,7 +33,7 @@ function UpdateComment({eachComment}) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='updateCommentModal' onSubmit={handleSubmit}>
       <p className='commentFormHeading'>Update my comment</p>
       <label>
         <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/><br/>

@@ -31,7 +31,7 @@ function CreatePaymentModal(expense) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='createPaymentModal' onSubmit={handleSubmit}>
       <p className='createPaymentHeading'>Friend involved in this expense</p>
       <div className='errors'>
         <ul>{errors.backendError}</ul>

@@ -30,7 +30,7 @@ function CreateComment({expenseId}) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='createCommentModal' onSubmit={handleSubmit}>
       <p className='commentFormHeading'>Create a comment</p>
       <label>
         <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/><br/>

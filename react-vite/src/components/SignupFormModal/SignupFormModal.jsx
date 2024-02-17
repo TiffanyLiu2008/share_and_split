@@ -39,7 +39,7 @@ function SignupFormModal() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='signUpModal' onSubmit={handleSubmit}>
       <p className='signUpHeading'>Sign Up</p>
       {errors.server && <p className='errors'>{errors.server}</p>}<br/>
       {errors.email && <p className='errors'>{errors.email}</p>}<br/>

@@ -34,7 +34,7 @@ function LoginFormModal() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='logInModal' onSubmit={handleSubmit}>
       <p className='logInHeading'>Log In</p>
       {errors.email && <p className='errors'>{errors.email}</p>}<br/>
       {errors.password && <p className='errors'>{errors.password}</p>}<br/>
