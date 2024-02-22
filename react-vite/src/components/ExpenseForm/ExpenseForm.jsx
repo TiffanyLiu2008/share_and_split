@@ -95,6 +95,7 @@ function ExpenseForm({expense, formType}) {
         Category:<br/>
       </label>
       <select className='expenseFormNormal' value={category} name='Category' onChange={(e) => setCategory(e.target.value)} required><br/>
+        <option value='' disabled>Please select a category</option>
         <option>Housing</option>
         <option>Food</option>
         <option>Transporation</option>
