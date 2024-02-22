@@ -18,6 +18,7 @@ function ExpenseIndex() {
     fetchData();
   }, [dispatch]);
   const expenses = useSelector(state => state.expenses.expenses);
+  const noExpense = Array.isArray(expenses) && expenses.length === 0;
   const isLoading = !expenses;
   if (isLoading) return (<>Loading...</>);
 
@@ -25,6 +26,9 @@ function ExpenseIndex() {
     <div className='expenseIndex'>
       <SideNavigation/>
       <ul className='mainContent'>
+        {noExpense &&
+          <p className='noExpense'>You do not have any expenses yet.  Feel free to create one.</p>
+        }
         {expenses.map((expense) => (
           <li>
             <ExpenseIndexItem expense={expense} key={expense.Id}/>

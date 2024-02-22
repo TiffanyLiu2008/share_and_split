@@ -10,3 +10,9 @@
     align-items: center;
     list-style-type: none;
 }
+.noExpense {
+    font-family: montserrat;
+    font-size: 20pt;
+    color: darkgray;
+    font-weight: bold;
+}

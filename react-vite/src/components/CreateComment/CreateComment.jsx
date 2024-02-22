@@ -11,31 +11,46 @@ function CreateComment({expenseId}) {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const {closeModal} = useModal();
+  const validateForm = () => {
+    const newErrors = {};
+    if (!commentText) {
+      newErrors.commentText = 'Comment is required';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    const formData = new FormData();
-    formData.append('comment', commentText);
-    setIsLoading(true);
-    try {
-      await dispatch(thunkCreateComment(expenseId, formData));
-      await dispatch(thunkGetExpenseComments(expenseId));
-      await dispatch(thunkGetExpenseDetails(expenseId));
-    } catch (error) {
-      console.error('Creating comment error', error);
-    } finally {
-      closeModal();
-      setIsLoading(false);
+    const isFormValid = validateForm();
+    if (isFormValid) {
+      const formData = new FormData();
+      formData.append('comment', commentText);
+      setIsLoading(true);
+      try {
+        await dispatch(thunkCreateComment(expenseId, formData));
+        await dispatch(thunkGetExpenseComments(expenseId));
+        await dispatch(thunkGetExpenseDetails(expenseId));
+      } catch (error) {
+        console.error('Creating comment error', error);
+      } finally {
+        closeModal();
+        setIsLoading(false);
+      }
     }
   };
+  const commentTextError = errors.commentText ? `${errors.commentText}` : null;
 
   return (
     <form className='createCommentModal' onSubmit={handleSubmit}>
       <p className='commentFormHeading'>Create a comment</p>
+      <div className='errors'>
+        <ul>{commentTextError}</ul>
+      </div>
       <label>
         <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/><br/>
       </label>
-      <button className='submitCommentButton' type='submit' disabled={commentText.length === 0}>Submit</button>
+      <button className='submitCommentButton' type='submit'>Submit</button>
       <button className='cancelButton' onClick={closeModal}>Cancel</button>
     </form>
   );

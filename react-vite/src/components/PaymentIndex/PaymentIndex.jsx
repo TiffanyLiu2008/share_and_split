@@ -18,6 +18,7 @@ function PaymentIndex() {
     fetchData();
   }, [dispatch]);
   const payments = useSelector(state => state.payments.payments);
+  const noPayment = Array.isArray(payments) && payments.length === 0;
   const isLoading = !payments;
   if (isLoading) return (<>Loading...</>);
 
@@ -25,6 +26,9 @@ function PaymentIndex() {
     <div className='paymentIndex'>
       <SideNavigation/>
       <ul className='mainContent'>
+        {noPayment &&
+          <p className='noPayment'>You do not have any pending or settled payments yet.</p>
+        }
         {payments.map((payment) => (
           <li>
             <PaymentIndexItem payment={payment} key={payment.id}/>

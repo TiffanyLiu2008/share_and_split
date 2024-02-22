@@ -69,7 +69,7 @@ function ExpenseForm({expense, formType}) {
         navigate('/expenses');
         setIsLoading(false);
       }
-    };
+    }
   };
   const descriptionError = errors.description ? `${errors.description}` : null;
   const categoryError = errors.category ? `${errors.category}` : null;
