@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 import os
 environment = os.getenv("FLASK_ENV")
-schema = os.environ.get("SCHEMA")
+new_schema = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = 'dd0bc515d59b'
@@ -31,7 +31,7 @@ def upgrade():
     sa.UniqueConstraint('username')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {schema};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {new_schema};")
     op.create_table('expenses',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('lender_id', sa.Integer(), nullable=False),
@@ -46,7 +46,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE expenses SET SCHEMA {schema};")
+        op.execute(f"ALTER TABLE expenses SET SCHEMA {new_schema};")
     op.create_table('friendships',
     sa.Column('inviter_id', sa.Integer(), nullable=True),
     sa.Column('invitee_id', sa.Integer(), nullable=True),
@@ -54,7 +54,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['inviter_id'], ['users.id'], )
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE friendships SET SCHEMA {schema};")
+        op.execute(f"ALTER TABLE friendships SET SCHEMA {new_schema};")
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('creator_id', sa.Integer(), nullable=False),
@@ -67,7 +67,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE comments SET SCHEMA {schema};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {new_schema};")
     op.create_table('payments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('expense_id', sa.Integer(), nullable=False),
@@ -80,7 +80,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE payments SET SCHEMA {schema};")
+        op.execute(f"ALTER TABLE payments SET SCHEMA {new_schema};")
     # ### end Alembic commands ###
 
 
