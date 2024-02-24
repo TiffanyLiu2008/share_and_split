@@ -2,19 +2,37 @@ from app.models import db, Comment, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_comments():
-    olivia = Comment(
+    olivia_rent = Comment(
         creator_id=1, expense_id=1, comment='Time to pay rent. $1000 each.')
-    liam_rent = Comment(
-        creator_id=3, expense_id=1, comment='Just paid. Thanks Olivia.')
-    liam_movie = Comment(
-        creator_id=3, expense_id=2, comment='Payment sent. Great movie.')
-    noah = Comment(
-        creator_id=4, expense_id=2, comment='Thanks Emma. Will venmo you tomorrow.')
+    emma_rent = Comment(
+        creator_id=2, expense_id=1, comment='Payment sent. Thanks Olivia.')
+    emma_dinner = Comment(
+        creator_id=2, expense_id=2, comment='Hope you all enjoyed the dinner!')
+    liam_dinner = Comment(
+        creator_id=3, expense_id=2, comment='Great food!')
+    liam_train = Comment(
+        creator_id=3, expense_id=3, comment='Train ticket to New York. $50 each.')
+    noah_train = Comment(
+        creator_id=4, expense_id=3, comment='Perfect trip! Will venmo you tomorrow.')
+    noah_movie = Comment(
+        creator_id=4, expense_id=4, comment='How did you guys like the movie?')
+    oliver_movie = Comment(
+        creator_id=5, expense_id=4, comment='Worst movie I have even seen lol.')
+    oliver_donation = Comment(
+        creator_id=5, expense_id=5, comment='Donation to our school. $10 each.')
+    olivia_donation = Comment(
+        creator_id=1, expense_id=5, comment='Payment sent. Missed our days on campus.')
 
-    db.session.add(olivia)
-    db.session.add(liam_rent)
-    db.session.add(liam_movie)
-    db.session.add(noah)
+    db.session.add(olivia_rent)
+    db.session.add(emma_rent)
+    db.session.add(emma_dinner)
+    db.session.add(liam_dinner)
+    db.session.add(liam_train)
+    db.session.add(noah_train)
+    db.session.add(noah_movie)
+    db.session.add(oliver_movie)
+    db.session.add(oliver_donation)
+    db.session.add(olivia_donation)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

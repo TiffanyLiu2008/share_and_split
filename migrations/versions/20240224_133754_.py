@@ -1,19 +1,16 @@
 """empty message
 
-Revision ID: 981703f5257e
-Revises:
-Create Date: 2024-02-04 00:04:57.759743
+Revision ID: dd0bc515d59b
+Revises: 
+Create Date: 2024-02-24 13:37:54.147417
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '981703f5257e'
+revision = 'dd0bc515d59b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,8 +27,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('expenses',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('lender_id', sa.Integer(), nullable=False),
@@ -45,16 +40,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['lender_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE expenses SET SCHEMA {SCHEMA};")
     op.create_table('friendships',
     sa.Column('inviter_id', sa.Integer(), nullable=True),
     sa.Column('invitee_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['invitee_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['inviter_id'], ['users.id'], )
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE friendships SET SCHEMA {SCHEMA};")
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('creator_id', sa.Integer(), nullable=False),
@@ -66,8 +57,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['expense_id'], ['expenses.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
     op.create_table('payments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('expense_id', sa.Integer(), nullable=False),
@@ -79,8 +68,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['expense_id'], ['expenses.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE payments SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

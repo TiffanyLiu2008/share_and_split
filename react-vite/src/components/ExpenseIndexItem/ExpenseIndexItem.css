@@ -30,22 +30,9 @@
     color: white;
     font-weight: bold;
 }
-.expenseBorrowed {
-    font-family: montserrat;
-    font-size: 14pt;
-    text-align: left;
-    color: lightcoral;
-    font-weight: bold;
-}
-.expenseLent {
+.expenseAmount {
     font-family: montserrat;
     font-size: 14pt;
     text-align: left;
     color: white;
-}
-.expenseSettled {
-    font-family: montserrat;
-    font-size: 14pt;
-    text-align: left;
-    color: darkgrey;
 }

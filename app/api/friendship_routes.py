@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import User, friendships, db
 from flask_migrate import Migrate
 from app.forms.add_friend_form import AddFriendForm
+from sqlalchemy import or_, not_
 
 friendship_routes = Blueprint('friendship', __name__)
 
@@ -10,7 +11,16 @@ friendship_routes = Blueprint('friendship', __name__)
 @friendship_routes.route('/current', methods=['GET'])
 @login_required
 def get_my_friends():
-    friends = current_user.friends
+    friends = User.query.join(
+        friendships,
+        or_(
+            (friendships.c.inviter_id == User.id),
+            (friendships.c.invitee_id == User.id)
+        )
+    ).filter(
+        (friendships.c.inviter_id == current_user.id) | (friendships.c.invitee_id == current_user.id),
+        not_(User.id == current_user.id)
+    ).all()
     return jsonify({'friends': [friend.to_dict() for friend in friends]})
 
 # Add a Friend ; POST ; /api/friendships
@@ -36,7 +46,7 @@ def add_a_friend():
 @friendship_routes.route('/<int:friend_id>', methods=['DELETE'])
 @login_required
 def remove_a_friend(friend_id):
-    existing_friends = current_user.friends
+    existing_friends = current_user.buddies
     if not any(friend.id == friend_id for friend in existing_friends):
         return jsonify({'message': 'Friend could not be found'}), 404
     db.session.execute(friendships.delete().where(
