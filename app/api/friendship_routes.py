@@ -7,10 +7,7 @@ from sqlalchemy import or_, not_
 
 friendship_routes = Blueprint('friendship', __name__)
 
-# Get All My Friends ; GET ; /api/friendships/current
-@friendship_routes.route('/current', methods=['GET'])
-@login_required
-def get_my_friends():
+def my_existing_friends():
     friends = User.query.join(
         friendships,
         or_(
@@ -21,6 +18,13 @@ def get_my_friends():
         (friendships.c.inviter_id == current_user.id) | (friendships.c.invitee_id == current_user.id),
         not_(User.id == current_user.id)
     ).all()
+    return friends
+
+# Get All My Friends ; GET ; /api/friendships/current
+@friendship_routes.route('/current', methods=['GET'])
+@login_required
+def get_my_friends():
+    friends = my_existing_friends()
     return jsonify({'friends': [friend.to_dict() for friend in friends]})
 
 # Add a Friend ; POST ; /api/friendships
@@ -46,7 +50,7 @@ def add_a_friend():
 @friendship_routes.route('/<int:friend_id>', methods=['DELETE'])
 @login_required
 def remove_a_friend(friend_id):
-    existing_friends = current_user.buddies
+    existing_friends = my_existing_friends()
     if not any(friend.id == friend_id for friend in existing_friends):
         return jsonify({'message': 'Friend could not be found'}), 404
     db.session.execute(friendships.delete().where(
