@@ -13,7 +13,18 @@ function HomePage() {
         <SideNavigation/>
       }
       <div className='mainContent'>
-        <img className='homePageImage' src={image} alt='homePageImage'/>
+        <div className='homePageText'>
+          <p>Less stress when</p>
+          <p>sharing expenses</p>
+          <p>with anyone.</p>
+        </div>
+        <div className='homePageImages'>
+          <img src={image} alt='homePageSmallImage1'/>
+          <img src={image} alt='homePageSmallImage2'/>
+          <img src={image} alt='homePageSmallImage3'/>
+          <img src={image} alt='homePageSmallImage4'/>
+        </div>
+        <img className='homePageImage' src={image} alt='homePageLargeImage'/>
       </div>
     </div>
   );

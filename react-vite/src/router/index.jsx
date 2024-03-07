@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         exact: true
       },
       {
-        path: "/expenses/new",
+        path: "/new",
         element: <CreateExpense/>,
         exact: true
       },

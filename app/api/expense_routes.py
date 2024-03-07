@@ -169,7 +169,7 @@ def delete_an_expense(expense_id):
 def get_all_expenses():
     all_expenses = Expense.query.all()
     involved_expenses = [expense for expense in all_expenses if can_view_an_expense(expense.id)]
-    sorted_expenses = sorted(involved_expenses, key=lambda expense: expense.bill_settled)
+    sorted_expenses = sorted(involved_expenses, key=lambda expense: expense.updated_at, reverse=True)
     return jsonify({'expenses': [expense.to_dict() for expense in sorted_expenses]})
 
 # Create an Expense ; POST ; /api/expenses

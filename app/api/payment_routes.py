@@ -42,7 +42,7 @@ def get_my_payments():
             'updated_at': payment.updated_at,
         }
         payments_data.append(payment_data)
-    sorted_payments = sorted(payments_data, key=lambda payment: payment['payment_made'])
+    sorted_payments = sorted(payments_data, key=lambda payment: (payment['payment_made'], payment['updated_at']))
     return jsonify({'payments': sorted_payments})
 
 # Edit a Payment ; PUT ; /api/payments/:paymentId
