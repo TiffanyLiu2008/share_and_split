@@ -1,7 +1,10 @@
 import './HomePage.css';
 import { useSelector } from 'react-redux';
-import image from '../../../../images/home_page.png';
 import SideNavigation from '../Navigation/SideNavigation';
+import entertainment from '../../../../images/entertainment.png';
+import food from '../../../../images/food.png';
+import housing from '../../../../images/housing.png';
+import transportation from '../../../../images/transportation.png';
 
 function HomePage() {
   const sessionUser = useSelector(state => state.session.user);
@@ -12,20 +15,19 @@ function HomePage() {
       {sessionUserId &&
         <SideNavigation/>
       }
-      <div className='mainContent'>
-        <div className='homePageText'>
-          <p>Less stress when</p>
-          <p>sharing expenses</p>
-          <p>with anyone.</p>
+      {!sessionUserId &&
+        <div className='mainContent'>
+          <div className='homePageText'>
+            <p>Less stress when sharing expenses with anyone...</p>
+          </div>
+          <div className='homePageImages'>
+            <img src={entertainment} alt='homePageImage1'/>
+            <img src={food} alt='homePageImage2'/>
+            <img src={housing} alt='homePageImage3'/>
+            <img src={transportation} alt='homePageImage4'/>
+          </div>
         </div>
-        <div className='homePageImages'>
-          <img src={image} alt='homePageSmallImage1'/>
-          <img src={image} alt='homePageSmallImage2'/>
-          <img src={image} alt='homePageSmallImage3'/>
-          <img src={image} alt='homePageSmallImage4'/>
-        </div>
-        <img className='homePageImage' src={image} alt='homePageLargeImage'/>
-      </div>
+      }
     </div>
   );
 }

@@ -1,19 +1,36 @@
 .homePage {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .mainContent {
-    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 100px;
+    max-width: 1200px;
 }
-/* .homePageText {
-
+.homePageText {
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: center;
+    color: darkgray;
+    font-weight: bold;
 }
 .homePageImages {
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.homePageImage {
-
-} */
+.homePageImages img {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    animation: rotateImage 30s linear infinite;
+}
+@keyframes rotateImage {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

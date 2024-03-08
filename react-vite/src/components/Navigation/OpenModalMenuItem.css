@@ -12,6 +12,7 @@
     font-size: 12pt;
     text-align: center;
     color: white;
+    list-style-type: none;
 }
 .openModalMenuButton:hover {
     opacity: 0.5;
