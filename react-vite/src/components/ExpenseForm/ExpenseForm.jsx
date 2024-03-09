@@ -98,7 +98,7 @@ function ExpenseForm({expense, formType}) {
         <option value='' disabled>Please select a category</option>
         <option>Housing</option>
         <option>Food</option>
-        <option>Transporation</option>
+        <option>Transportation</option>
         <option>Entertainment</option>
         <option>Others</option>
       </select><br/>

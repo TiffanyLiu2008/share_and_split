@@ -1,4 +1,4 @@
-import './UpdateComment.css';
+import './UpdateCommentModal.css';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -6,7 +6,7 @@ import { useModal } from '../../context/Modal';
 import { thunkUpdateComment, thunkGetExpenseComments } from '../../redux/comments';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 
-function UpdateComment({eachComment}) {
+function UpdateCommentModal({eachComment}) {
   const dispatch = useDispatch();
   const {expenseId} = useParams();
   const [commentText, setCommentText] = useState(eachComment?.comment);
@@ -44,4 +44,4 @@ function UpdateComment({eachComment}) {
   );
 }
 
-export default UpdateComment;
+export default UpdateCommentModal;

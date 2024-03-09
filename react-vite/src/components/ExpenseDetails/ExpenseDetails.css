@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
 }
-.mainContent {
+.mainContentDetails {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: 100px;
 }
@@ -31,12 +32,16 @@
     text-align: left;
     color: darkgray;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 .expenseDetailsCreatedAt {
     font-family: montserrat;
     font-size: 14pt;
     text-align: left;
     color: darkgray;
+    display: flex;
+    justify-content: center;
 }
 .expenseDetailsDescription {
     font-family: montserrat;
@@ -44,13 +49,8 @@
     text-align: left;
     color: darkgray;
     font-weight: bold;
-}
-.expenseDetailsCategory {
-    font-family: montserrat;
-    font-size: 14pt;
-    text-align: left;
-    color: darkgray;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 .expenseDetailsLender{
     font-family: montserrat;
@@ -58,10 +58,16 @@
     text-align: left;
     color: darkslategray;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 .expenseDetailsInfo{
     font-family: montserrat;
     font-size: 14pt;
     text-align: left;
     color: darkgrey;
+    margin-left: 60px;
+    list-style-type: none;
+    display: flex;
+    justify-content: left;
 }

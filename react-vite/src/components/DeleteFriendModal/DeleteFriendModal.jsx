@@ -1,4 +1,5 @@
 import './DeleteFriendModal.css';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { thunkDeleteFriend } from '../../redux/friends';
@@ -6,6 +7,7 @@ import { thunkDeleteFriend } from '../../redux/friends';
 function DeleteFriendModal({friend}) {
   const friendId = friend.id;
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState({});
   const {closeModal} = useModal();
   const handleDelete = async (e) => {
     e.preventDefault();

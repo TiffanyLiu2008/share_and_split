@@ -16,7 +16,7 @@ class CreateEditExpenseForm(FlaskForm):
     choices = [
         ('Housing', 'Housing'),
         ('Food', 'Food'),
-        ('Transporation', 'Transportation'),
+        ('Transportation', 'Transportation'),
         ('Entertainment', 'Entertainment'),
         ('Others', 'Others')
     ]

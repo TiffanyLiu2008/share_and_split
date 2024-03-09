@@ -1,5 +1,5 @@
 .eachPayment {
-    width: 400px;
+    width: 320px;
     height: 140px;
     padding: 10px;
     background-color: lightgray;
@@ -7,6 +7,10 @@
     border-radius: 10px;
     box-shadow: 5px 5px lightblue;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .eachPayment:hover {
     opacity: 0.5;
@@ -14,25 +18,25 @@
 .paymentCreatedAt {
     font-family: montserrat;
     font-size: 14pt;
-    text-align: left;
+    text-align: center;
     color: white;
 }
 .paymentBorrowed {
     font-family: montserrat;
     font-size: 14pt;
-    text-align: left;
+    text-align: center;
     color: lightcoral;
     font-weight: bold;
 }
 .paymentLent {
     font-family: montserrat;
     font-size: 14pt;
-    text-align: left;
+    text-align: center;
     color: white;
 }
 .paymentSettled {
     font-family: montserrat;
     font-size: 14pt;
-    text-align: left;
+    text-align: center;
     color: darkgrey;
 }

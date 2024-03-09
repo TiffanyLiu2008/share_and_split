@@ -1,10 +1,12 @@
 .expenseIndex {
     display: flex;
     justify-content: center;
+    margin-left: 250px;
+    margin-right: 250px;
 }
 .mainContent {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 100px;
     list-style-type: none;
@@ -14,4 +16,13 @@
     font-size: 20pt;
     color: darkgray;
     font-weight: bold;
+}
+.expenseIndexImage {
+    margin-top: 50px;
+    animation: flipImage 20s linear infinite;;
+}
+@keyframes flipImage {
+    50% {
+        transform: scaleX(-1);
+    }
 }

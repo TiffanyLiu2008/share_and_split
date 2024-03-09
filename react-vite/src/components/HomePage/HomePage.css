@@ -15,22 +15,29 @@
     color: darkgray;
     font-weight: bold;
 }
-.homePageImages {
+.homePageImages-1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.homePageImages img {
+.homePageImages-1 img {
     width: 400px;
     height: 400px;
     margin: 20px;
-    animation: rotateImage 30s linear infinite;
+    animation: flipImages 20s linear infinite;;
 }
-@keyframes rotateImage {
-    from {
-        transform: rotate(0deg);
+@keyframes flipImages {
+    50% {
+        transform: scaleX(-1);
     }
-    to {
-        transform: rotate(360deg);
-    }
+}
+.homePageImages-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.homePageImages-2 img {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
 }

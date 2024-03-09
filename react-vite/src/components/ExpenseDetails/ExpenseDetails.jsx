@@ -76,7 +76,7 @@ function ExpenseDetails() {
   return (
     <div className='expenseDetails'>
       <SideNavigation/>
-      <div className='mainContent'>
+      <div className='mainContentDetails'>
         {isLender && !bill_settled &&
           <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
         }

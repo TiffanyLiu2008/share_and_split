@@ -5,7 +5,7 @@ import { useModal } from '../../context/Modal';
 import { thunkCreateComment, thunkGetExpenseComments } from '../../redux/comments';
 import { thunkGetExpenseDetails } from '../../redux/expenses';
 
-function CreateComment({expenseId}) {
+function CreateCommentModal({expenseId}) {
   const dispatch = useDispatch();
   const [commentText, setCommentText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -56,4 +56,4 @@ function CreateComment({expenseId}) {
   );
 }
 
-export default CreateComment;
+export default CreateCommentModal;

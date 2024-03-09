@@ -11,20 +11,32 @@ function HomePage() {
   const sessionUserId = sessionUser ? sessionUser.id : null;
 
   return (
-    <div className='homePage'>
-      {sessionUserId &&
-        <SideNavigation/>
-      }
+    <div>
       {!sessionUserId &&
-        <div className='mainContent'>
-          <div className='homePageText'>
-            <p>Less stress when sharing expenses with anyone...</p>
+        <div className='homePage'>
+          <div className='mainContent'>
+            <div className='homePageText'>
+              <p>Less stress when sharing expenses with anyone...</p>
+            </div>
+            <div className='homePageImages-1'>
+              <img src={entertainment} alt='homePageImage1'/>
+              <img src={food} alt='homePageImage2'/>
+              <img src={housing} alt='homePageImage3'/>
+              <img src={transportation} alt='homePageImage4'/>
+            </div>
           </div>
-          <div className='homePageImages'>
-            <img src={entertainment} alt='homePageImage1'/>
-            <img src={food} alt='homePageImage2'/>
-            <img src={housing} alt='homePageImage3'/>
-            <img src={transportation} alt='homePageImage4'/>
+        </div>
+      }
+      {sessionUserId &&
+        <div className='homePage'>
+          <SideNavigation/>
+          <div className='mainContent'>
+            <div className='homePageImages-2'>
+              <img src={entertainment} alt='homePageImage1'/>
+              <img src={food} alt='homePageImage2'/>
+              <img src={housing} alt='homePageImage3'/>
+              <img src={transportation} alt='homePageImage4'/>
+            </div>
           </div>
         </div>
       }

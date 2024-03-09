@@ -1,8 +1,13 @@
 import './ExpenseIndexItem.css';
 import { Link } from 'react-router-dom';
+import entertainment from '../../../../images/entertainment.png';
+import food from '../../../../images/food.png';
+import housing from '../../../../images/housing.png';
+import others from '../../../../images/others.png';
+import transportation from '../../../../images/transportation.png';
 
 function ExpenseIndexItem({expense}) {
-  const {lender_id, description, amount, shared_among, bill_settled, created_at, each_person} = expense;
+  const {description, category, created_at, each_person} = expense;
   const convertDate = (oldDate) => {
     const dateObject = new Date(oldDate);
     const month = dateObject.toLocaleString('en-us', { month: 'long' });
@@ -12,6 +17,20 @@ function ExpenseIndexItem({expense}) {
   };
   const date = convertDate(created_at);
   const formattedEachPerson = each_person.toFixed(2);
+  const categoryPic = (category) => {
+    switch (category) {
+      case 'Entertainment':
+        return entertainment;
+      case 'Food':
+        return food;
+      case 'Housing':
+        return housing;
+      case 'Transportation':
+        return transportation;
+      default:
+        return others;
+    }
+  };
 
   return (
     <div className='eachExpense'>
@@ -19,6 +38,7 @@ function ExpenseIndexItem({expense}) {
         <p className='expenseCreatedAt'>{date}</p>
         <p className='expenseDescription'>{description}</p>
         <p className='expenseAmount'>${formattedEachPerson}</p>
+        <img className='expenseCategoryPic' src={categoryPic(category)} alt='categoryPic'/>
       </Link>
     </div>
   );
