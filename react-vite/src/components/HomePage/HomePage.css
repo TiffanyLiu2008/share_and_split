@@ -1,10 +1,43 @@
 .homePage {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .mainContent {
-    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 100px;
+    max-width: 1200px;
+}
+.homePageText {
+    font-family: montserrat;
+    font-size: 20pt;
+    text-align: center;
+    color: darkgray;
+    font-weight: bold;
+}
+.homePageImages-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.homePageImages-1 img {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    animation: flipImages 20s linear infinite;;
+}
+@keyframes flipImages {
+    50% {
+        transform: scaleX(-1);
+    }
+}
+.homePageImages-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.homePageImages-2 img {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
 }

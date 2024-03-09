@@ -1,15 +1,16 @@
 .eachExpense {
-    width: 400px;
-    height: 150px;
-    padding: 10px;
+    width: 140px;
+    height: 280px;
+    padding: 20px;
     background-color: lightblue;
     border: 2px solid lightgray;
     border-radius: 10px;
     box-shadow: 5px 5px lightgray;
     margin: 20px;
-    display: flex;
-    align-items: center;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .eachExpense:hover {
     opacity: 0.5;
@@ -20,19 +21,24 @@
 .expenseCreatedAt {
     font-family: montserrat;
     font-size: 14pt;
-    text-align: left;
+    text-align: center;
     color: white;
+
 }
 .expenseDescription {
     font-family: montserrat;
     font-size: 20pt;
-    text-align: left;
+    text-align: center;
     color: white;
     font-weight: bold;
 }
 .expenseAmount {
     font-family: montserrat;
     font-size: 14pt;
-    text-align: left;
+    text-align: center;
     color: white;
+}
+.expenseCategoryPic {
+    width: 100px;
+    height: 100px;
 }

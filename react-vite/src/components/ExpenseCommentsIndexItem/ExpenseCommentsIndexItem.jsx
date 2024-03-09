@@ -1,7 +1,7 @@
 import './ExpenseCommentsIndexItem.css';
 import { useSelector } from 'react-redux';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
-import UpdateComment from '../UpdateComment';
+import UpdateCommentModal from '../UpdateCommentModal';
 import DeleteCommentModal from '../DeleteCommentModal';
 
 function ExpenseCommentsIndexItem({eachComment}) {
@@ -25,7 +25,7 @@ function ExpenseCommentsIndexItem({eachComment}) {
       <p className='commentCreatedAt'>{date}</p>
       {isCreator &&
         <div>
-          <OpenModalMenuItem itemText='Edit' modalComponent={<UpdateComment eachComment={eachComment}/>}/>
+          <OpenModalMenuItem itemText='Edit' modalComponent={<UpdateCommentModal eachComment={eachComment}/>}/>
           <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteCommentModal eachComment={eachComment}/>}/>
         </div>
       }

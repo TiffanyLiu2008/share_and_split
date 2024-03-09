@@ -1,7 +1,9 @@
 .sideNav {
     width: 200px;
-    background-color: white;
-    padding: 20px;
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    height: 100%;
 }
 .sideNavButton {
     display: block;
@@ -22,3 +24,6 @@
 .sideNavButton:hover {
     opacity: 0.5;
 }
+.sideNavButton.active {
+    background-color: lightskyblue;
+  }

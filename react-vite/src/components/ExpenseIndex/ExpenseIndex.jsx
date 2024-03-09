@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllExpenses } from '../../redux/expenses';
 import SideNavigation from '../Navigation/SideNavigation';
 import ExpenseIndexItem from '../ExpenseIndexItem';
+import expensesPic from '../../../../images/expenses.png';
 
 function ExpenseIndex() {
   const dispatch = useDispatch();
@@ -27,7 +28,10 @@ function ExpenseIndex() {
       <SideNavigation/>
       <ul className='mainContent'>
         {noExpense &&
-          <p className='noExpense'>You do not have any expenses yet.  Feel free to create one.</p>
+          <div>
+            <p className='noExpense'>You do not have any expenses yet.  Feel free to create one.</p>
+            <img className='expenseIndexImage' src={expensesPic} alt='expenseIndexPic'/>
+          </div>
         }
         {expenses.map((expense) => (
           <li>

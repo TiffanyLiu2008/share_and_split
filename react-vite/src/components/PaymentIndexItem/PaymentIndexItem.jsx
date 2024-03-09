@@ -20,23 +20,30 @@ function PaymentIndexItem({payment}) {
 
   return (
     <div className='eachPayment'>
-      <p className='paymentCreatedAt'>{date}</p>
       {isBorrower && !payment_made &&
         <div>
+          <p className='paymentCreatedAt'>{date}</p>
           <p className='paymentBorrowed'>You owe {lender_username} ${formattedEachPerson}</p>
         </div>
       }
       {!isBorrower && !payment_made &&
         <div>
+          <p className='paymentCreatedAt'>{date}</p>
           <p className='paymentLent'>{borrower_username} owes you ${formattedEachPerson}</p>
           <OpenModalMenuItem itemText='Settle' modalComponent={<SettlePaymentModal payment={payment}/>}/>
         </div>
       }
       {isBorrower && payment_made &&
-        <p className='paymentSettled'>Made ${formattedEachPerson} to {lender_username} (settled)</p>
+        <div>
+          <p className='paymentCreatedAt'>{date}</p>
+          <p className='paymentSettled'>Made ${formattedEachPerson} to {lender_username} (settled)</p>
+        </div>
       }
       {!isBorrower && payment_made &&
-        <p className='paymentSettled'>Received ${formattedEachPerson} from {borrower_username} (settled)</p>
+        <div>
+          <p className='paymentCreatedAt'>{date}</p>
+          <p className='paymentSettled'>Received ${formattedEachPerson} from {borrower_username} (settled)</p>
+        </div>
       }
     </div>
   );

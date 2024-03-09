@@ -7,6 +7,10 @@
     border-radius: 10px;
     box-shadow: 5px 5px lightblue;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .eachFriend:hover {
     opacity: 0.5;

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetExpenseComments } from '../../redux/comments';
 import ExpenseCommentsIndexItem from '../ExpenseCommentsIndexItem/ExpenseCommentsIndexItem';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
-import CreateComment from '../CreateComment';
+import CreateCommentModal from '../CreateCommentModal';
 
 function ExpenseCommentsIndex() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function ExpenseCommentsIndex() {
   return (
     <div>
       <p className='expenseCommentsIndexHeading'>Comments:</p>
-      <OpenModalMenuItem itemText='Add' modalComponent={<CreateComment expenseId={expenseId}/>}/>
+      <OpenModalMenuItem itemText='Add' modalComponent={<CreateCommentModal expenseId={expenseId}/>}/>
       <ul className='expenseCommentsIndex'>
         {Object.values(comments).map((comment) => (
           <li>

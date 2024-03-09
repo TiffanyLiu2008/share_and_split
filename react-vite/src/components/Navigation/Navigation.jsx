@@ -8,7 +8,14 @@ function Navigation() {
 
   return (
     <div className='topNav'>
-      <NavLink to="/"><img className='topNavLogo' src={logoImg} alt='logo'/></NavLink>
+      <div className='logoName'>
+        <ul>
+          <NavLink to="/"><img className='topNavLogo' src={logoImg} alt='logo'/></NavLink>
+        </ul>
+        <ul>
+          <NavLink to="/" className='topNavName'><p className='topNavName'>Share & Split</p></NavLink>
+        </ul>
+      </div>
       <ProfileButton/>
     </div>
   );

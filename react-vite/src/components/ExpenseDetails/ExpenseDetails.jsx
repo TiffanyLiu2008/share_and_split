@@ -10,6 +10,11 @@ import DeleteExpenseModal from '../DeleteExpenseModal';
 import ExpensePaymentsIndex from '../ExpensePaymentsIndex';
 import ExpenseCommentsIndex from '../ExpenseCommentsIndex';
 import CreatePaymentModal from '../CreatePaymentModal';
+import entertainment from '../../../../images/entertainment.png';
+import food from '../../../../images/food.png';
+import housing from '../../../../images/housing.png';
+import others from '../../../../images/others.png';
+import transportation from '../../../../images/transportation.png';
 
 function ExpenseDetails() {
   const dispatch = useDispatch();
@@ -53,11 +58,25 @@ function ExpenseDetails() {
   const formattedAmount = amount.toFixed(2);
   const formattedEachPerson = (amount/shared_among).toFixed(2);
   const needMorePayments = Object.values(payments).length !== shared_among - 1;
+  const categoryPic = (category) => {
+    switch (category) {
+      case 'Entertainment':
+        return entertainment;
+      case 'Food':
+        return food;
+      case 'Housing':
+        return housing;
+      case 'Transportation':
+        return transportation;
+      default:
+        return others;
+    }
+  };
 
   return (
     <div className='expenseDetails'>
       <SideNavigation/>
-      <div className='mainContent'>
+      <div className='mainContentDetails'>
         {isLender && !bill_settled &&
           <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
         }
@@ -69,12 +88,12 @@ function ExpenseDetails() {
         }
         <p className='expenseDetailsCreatedAt'>{date}</p>
         <p className='expenseDetailsDescription'>{description}</p>
-        <p className='expenseDetailsCategory'>{category}</p>
+        <img src={categoryPic(category)} alt='categoryPic'/>
         <p className='expenseDetailsLender'>{lender_username} paid ${formattedAmount}</p>
         <p className='expenseDetailsInfo'>Splitted by:</p>
         <li className='expenseDetailsInfo'>{lender_username} ${formattedEachPerson}</li>
         {isLender && needMorePayments &&
-          <OpenModalMenuItem itemText='People involved' modalComponent={<CreatePaymentModal expense={expense}/>}/>
+          <OpenModalMenuItem itemText='Shared with?' modalComponent={<CreatePaymentModal expense={expense}/>}/>
         }
         <ExpensePaymentsIndex/>
         <ExpenseCommentsIndex/>

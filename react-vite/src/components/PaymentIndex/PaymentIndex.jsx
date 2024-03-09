@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllPayments } from '../../redux/payments';
 import SideNavigation from '../Navigation/SideNavigation';
 import PaymentIndexItem from '../PaymentIndexItem';
+import paymentsPic from '../../../../images/payments.png';
 
 function PaymentIndex() {
   const dispatch = useDispatch();
@@ -27,7 +28,10 @@ function PaymentIndex() {
       <SideNavigation/>
       <ul className='mainContent'>
         {noPayment &&
-          <p className='noPayment'>You do not have any pending or settled payments yet.</p>
+          <div>
+            <p className='noPayment'>You do not have any pending or settled payments yet.</p>
+            <img className='paymentIndexImage' src={paymentsPic} alt='paymentIndexPic'/>
+          </div>
         }
         {payments.map((payment) => (
           <li>
