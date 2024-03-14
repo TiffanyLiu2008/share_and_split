@@ -24,7 +24,7 @@
     color: white;
 }
 .updateExpenseButton:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .expenseDetailsBillSettled {
     font-family: montserrat;

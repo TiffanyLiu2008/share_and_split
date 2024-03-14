@@ -22,7 +22,7 @@
     color: white;
 }
 .sideNavButton:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .sideNavButton.active {
     background-color: lightskyblue;

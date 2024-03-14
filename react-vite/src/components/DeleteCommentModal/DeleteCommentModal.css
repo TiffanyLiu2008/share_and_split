@@ -31,7 +31,7 @@
     color: white;
 }
 .deleteCommentYes:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .deleteCommentNo {
     width: 150px;
@@ -49,5 +49,5 @@
     color: white;
 }
 .deleteCommentNo:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }

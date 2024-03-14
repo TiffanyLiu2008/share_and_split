@@ -56,7 +56,7 @@
     color: white;
 }
 .logInButton:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .demoButton {
     width: 150px;
@@ -74,7 +74,7 @@
     color: white;
 }
 .demoButton:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .cancelButton {
     width: 150px;
@@ -92,5 +92,5 @@
     color: white;
 }
 .cancelButton:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }

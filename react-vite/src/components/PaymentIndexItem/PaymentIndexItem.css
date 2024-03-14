@@ -13,7 +13,7 @@
     align-items: center;
 }
 .eachPayment:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .paymentCreatedAt {
     font-family: montserrat;
