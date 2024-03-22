@@ -1,4 +1,38 @@
-.eachPayment {
+.borrowedPayment {
+    width: 320px;
+    height: 140px;
+    padding: 10px;
+    background-color: lightblue;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightblue;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.borrowedPayment:hover {
+    opacity: 0.8;
+}
+.lentPayment {
+    width: 320px;
+    height: 140px;
+    padding: 10px;
+    background-color: lightcoral;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightblue;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.lentPayment:hover {
+    opacity: 0.8;
+}
+.settledPayment {
     width: 320px;
     height: 140px;
     padding: 10px;
@@ -12,7 +46,7 @@
     justify-content: center;
     align-items: center;
 }
-.eachPayment:hover {
+.settledPayment:hover {
     opacity: 0.8;
 }
 .paymentCreatedAt {
@@ -38,5 +72,5 @@
     font-family: montserrat;
     font-size: 14pt;
     text-align: center;
-    color: darkgrey;
+    color: white;
 }

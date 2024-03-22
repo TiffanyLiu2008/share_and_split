@@ -27,7 +27,10 @@
     animation: flipImage 20s linear infinite;;
 }
 @keyframes flipImage {
-    50% {
+    0% {
+        transform: scaleX(1);
+    }
+    100% {
         transform: scaleX(-1);
     }
 }
