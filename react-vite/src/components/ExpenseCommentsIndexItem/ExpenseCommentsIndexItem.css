@@ -9,7 +9,7 @@
     margin: 20px;
 }
 .eachComment:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 .commentContent {
     font-family: montserrat;

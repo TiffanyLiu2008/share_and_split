@@ -29,7 +29,8 @@ function ExpenseIndex() {
       <ul className='mainContent'>
         {noExpense &&
           <div>
-            <p className='noExpense'>You do not have any expenses yet.  Feel free to create one.</p>
+            <p className='noExpense'>You have not added any expenses yet.</p>
+            <p className='noExpense'>To add a new expense, click the blue "Add an expense" button.</p>
             <img className='expenseIndexImage' src={expensesPic} alt='expenseIndexPic'/>
           </div>
         }

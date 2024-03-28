@@ -29,7 +29,7 @@ function PaymentIndex() {
       <ul className='mainContent'>
         {noPayment &&
           <div>
-            <p className='noPayment'>You do not have any pending or settled payments yet.</p>
+            <p className='noPayment'>You are all settled up. Awesome!</p>
             <img className='paymentIndexImage' src={paymentsPic} alt='paymentIndexPic'/>
           </div>
         }

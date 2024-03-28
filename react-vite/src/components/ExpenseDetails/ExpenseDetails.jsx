@@ -77,11 +77,11 @@ function ExpenseDetails() {
     <div className='expenseDetails'>
       <SideNavigation/>
       <div className='mainContentDetails'>
-        {isLender && !bill_settled &&
-          <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
-        }
         {isLender && bill_settled &&
           <p className='expenseDetailsBillSettled'>SETTLED</p>
+        }
+        {isLender && !bill_settled &&
+          <Link to={`/expenses/${expense.id}/edit`}><button className='updateExpenseButton'>Edit</button></Link>
         }
         {isLender &&
           <OpenModalMenuItem itemText='Delete' modalComponent={<DeleteExpenseModal expense={expense}/>}/>
