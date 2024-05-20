@@ -14,11 +14,13 @@ def shared_with_people(form, field):
 
 class CreateEditExpenseForm(FlaskForm):
     choices = [
-        ('Housing', 'Housing'),
-        ('Food', 'Food'),
-        ('Transportation', 'Transportation'),
         ('Entertainment', 'Entertainment'),
-        ('Others', 'Others')
+        ('Food and drink', 'Food and drink'),
+        ('Home', 'Home'),
+        ('Life', 'Life'),
+        ('Transportation', 'Transportation'),
+        ('Utilities', 'Utilities'),
+        ('Uncategorized', 'Uncategorized')
     ]
     description = StringField('Description', validators=[DataRequired()])
     category = RadioField('Category', choices=choices, default='Others', validators=[DataRequired()])

@@ -1,8 +1,20 @@
 .borrowedPayment {
-    width: 320px;
+    /* width: 320px;
     height: 140px;
     padding: 10px;
     background-color: lightblue;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    box-shadow: 5px 5px lightblue;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    width: 320px;
+    height: 140px;
+    padding: 10px;
+    background-color: lightcoral;
     border: 2px solid lightblue;
     border-radius: 10px;
     box-shadow: 5px 5px lightblue;
@@ -56,11 +68,15 @@
     color: white;
 }
 .paymentBorrowed {
-    font-family: montserrat;
+    /* font-family: montserrat;
     font-size: 14pt;
     text-align: center;
     color: lightcoral;
-    font-weight: bold;
+    font-weight: bold; */
+    font-family: montserrat;
+    font-size: 14pt;
+    text-align: center;
+    color: white;
 }
 .paymentLent {
     font-family: montserrat;

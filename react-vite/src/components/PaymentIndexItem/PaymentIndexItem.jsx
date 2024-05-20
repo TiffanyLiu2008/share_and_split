@@ -1,7 +1,8 @@
 import './PaymentIndexItem.css';
 import { useSelector } from 'react-redux';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
-import SettlePaymentModal from '../SettlePaymentModal';
+import RecordPaymentModal from '../RecordPaymentModal';
+import VenmoPaymentModal from '../VenmoPaymentModal';
 
 function PaymentIndexItem({payment}) {
   const {payment_made, updated_at, borrower_id, borrower_username, lender_username, each_person} = payment;
@@ -24,13 +25,14 @@ function PaymentIndexItem({payment}) {
         <div className='borrowedPayment'>
           <p className='paymentCreatedAt'>{date}</p>
           <p className='paymentBorrowed'>You owe {lender_username} ${formattedEachPerson}</p>
+          <OpenModalMenuItem itemText='Settle' modalComponent={<VenmoPaymentModal/>}/>
         </div>
       }
       {!isBorrower && !payment_made &&
         <div className='lentPayment'>
           <p className='paymentCreatedAt'>{date}</p>
           <p className='paymentLent'>{borrower_username} owes you ${formattedEachPerson}</p>
-          <OpenModalMenuItem itemText='Settle' modalComponent={<SettlePaymentModal payment={payment}/>}/>
+          <OpenModalMenuItem itemText='Settle' modalComponent={<RecordPaymentModal payment={payment}/>}/>
         </div>
       }
       {isBorrower && payment_made &&

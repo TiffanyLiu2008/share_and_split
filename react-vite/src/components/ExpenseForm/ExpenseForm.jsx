@@ -15,7 +15,7 @@ function ExpenseForm({expense, formType}) {
   const [bill_settled, setBillSettled] = useState(expense?.bill_settled);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const title = formType === 'Create Expense' ? 'Create an expense' : 'Update my expense';
+  const title = formType === 'Create Expense' ? 'Add an expense' : 'Update my expense';
   const onStatusChange = e => {
     setBillSettled(e.target.value);
   };
@@ -89,22 +89,24 @@ function ExpenseForm({expense, formType}) {
       </div>
       <label className='expenseFormLabel'>
         Description:<br/>
-        <input className='expenseFormNormal' type='text' value={description} placeholder='Description' onChange={(e) => setDescription(e.target.value)} required/><br/>
+        <input className='expenseFormNormal' type='text' value={description} placeholder='Enter a description' onChange={(e) => setDescription(e.target.value)} required/><br/>
       </label>
       <label className='expenseFormLabel'>
         Category:<br/>
       </label>
       <select className='expenseFormNormal' value={category} name='Category' onChange={(e) => setCategory(e.target.value)} required><br/>
         <option value='' disabled>Please select a category</option>
-        <option>Housing</option>
-        <option>Food</option>
-        <option>Transportation</option>
         <option>Entertainment</option>
-        <option>Others</option>
+        <option>Food and drink</option>
+        <option>Home</option>
+        <option>Life</option>
+        <option>Transportation</option>
+        <option>Utilities</option>
+        <option>Uncategorized</option>
       </select><br/>
       <label className='expenseFormLabel'>
         Amount:<br/>
-        <input className='expenseFormNormal' type='text' value={amount} placeholder='Amount' onChange={(e) => setAmount(e.target.value)} required/><br/>
+        <input className='expenseFormNormal' type='text' value={amount} placeholder='$0.00' onChange={(e) => setAmount(e.target.value)} required/><br/>
       </label>
       <div className='expenseFormLabel'>
         Bill settled?<br/>

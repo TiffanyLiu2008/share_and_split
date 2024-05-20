@@ -21,12 +21,16 @@ function ExpenseIndexItem({expense}) {
     switch (category) {
       case 'Entertainment':
         return entertainment;
-      case 'Food':
+      case 'Food and drink':
         return food;
-      case 'Housing':
-        return housing;
+      case 'Home':
+        return home;
+      case 'Life':
+        return others;
       case 'Transportation':
         return transportation;
+      case 'Utilities':
+        return others;
       default:
         return others;
     }

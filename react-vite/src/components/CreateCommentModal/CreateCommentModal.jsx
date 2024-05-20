@@ -43,14 +43,14 @@ function CreateCommentModal({expenseId}) {
 
   return (
     <form className='createCommentModal' onSubmit={handleSubmit}>
-      <p className='commentFormHeading'>Create a comment</p>
+      <p className='commentFormHeading'>Add a comment</p>
       <div className='errors'>
         <ul>{commentTextError}</ul>
       </div>
       <label>
-        <textarea className='commentFormNormal' value={commentText} placeholder='Your comment' onChange={(e) => setCommentText(e.target.value)} required/><br/>
+        <textarea className='commentFormNormal' value={commentText} placeholder='Add a comment' onChange={(e) => setCommentText(e.target.value)} required/><br/>
       </label>
-      <button className='submitCommentButton' type='submit'>Submit</button>
+      <button className='submitCommentButton' type='submit'>Post</button>
       <button className='cancelButton' onClick={closeModal}>Cancel</button>
     </form>
   );

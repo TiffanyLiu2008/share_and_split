@@ -12,7 +12,7 @@ import ExpenseCommentsIndex from '../ExpenseCommentsIndex';
 import CreatePaymentModal from '../CreatePaymentModal';
 import entertainment from '../../../../images/entertainment.png';
 import food from '../../../../images/food.png';
-import housing from '../../../../images/housing.png';
+import home from '../../../../images/housing.png';
 import others from '../../../../images/others.png';
 import transportation from '../../../../images/transportation.png';
 
@@ -62,12 +62,16 @@ function ExpenseDetails() {
     switch (category) {
       case 'Entertainment':
         return entertainment;
-      case 'Food':
+      case 'Food and drink':
         return food;
-      case 'Housing':
-        return housing;
+      case 'Home':
+        return home;
+      case 'Life':
+        return others;
       case 'Transportation':
         return transportation;
+      case 'Utilities':
+        return others;
       default:
         return others;
     }

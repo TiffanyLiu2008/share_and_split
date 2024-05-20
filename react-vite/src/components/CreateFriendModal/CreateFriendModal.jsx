@@ -29,14 +29,14 @@ function CreateFriendModal() {
 
   return (
     <form className='addFriendModal' onSubmit={handleSubmit}>
-      <p className='addFriendHeading'>New friend</p>
+      <p className='addFriendHeading'>Add a friend</p>
       <div className='errors'>
         <ul>{errors.backendError}</ul>
       </div>
       <label>
         <input className='addFriendNormal' type='text' value={friend_username} placeholder='Username of your friend' onChange={(e) => setFriendUsername(e.target.value)} required/>
       </label>
-      <button className='submitFriendButton' type='submit'>Submit</button>
+      <button className='submitFriendButton' type='submit'>Add</button>
       <button className='cancelButton' onClick={closeModal}>Cancel</button>
     </form>
   );
