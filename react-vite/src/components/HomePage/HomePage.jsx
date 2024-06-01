@@ -20,8 +20,8 @@ function HomePage() {
             </div>
             <div className='homePageImages-1'>
               <img src={entertainment} alt='homePageImage1'/>
-              <img src={food} alt='homePageImage2'/>
-              <img src={housing} alt='homePageImage3'/>
+              <img src={food_and_drink} alt='homePageImage2'/>
+              <img src={home} alt='homePageImage3'/>
               <img src={transportation} alt='homePageImage4'/>
             </div>
           </div>
