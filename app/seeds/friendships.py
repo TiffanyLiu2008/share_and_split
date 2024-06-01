@@ -23,6 +23,7 @@ def seed_friendships():
     db.session.execute(friendship_3_4)
     db.session.execute(friendship_3_5)
     db.session.execute(friendship_4_5)
+
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

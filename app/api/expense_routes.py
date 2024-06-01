@@ -146,6 +146,7 @@ def edit_an_expense(expense_id):
         expense.amount=form.data['amount']
         expense.shared_among=form.data['shared_among']
         expense.bill_settled=form.data['bill_settled']
+        expense.expense_date=form.data['expense_date']
         db.session.commit()
         return jsonify(expense.to_dict())
     return form.errors, 400
@@ -185,7 +186,8 @@ def create_an_expense():
             category=form.data['category'],
             amount=form.data['amount'],
             shared_among=form.data['shared_among'],
-            bill_settled=form.data['bill_settled']
+            bill_settled=form.data['bill_settled'],
+            expense_date=form.data['expense_date']
         )
         db.session.add(new_expense)
         db.session.commit()

@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
 }
-.expenseDetailsCreatedAt {
+.expenseDetailsExpenseDate {
     font-family: montserrat;
     font-size: 14pt;
     text-align: left;

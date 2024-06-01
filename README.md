@@ -36,3 +36,19 @@ ShareAndSplit, a Splitwise clone, is a website for friends to split bills for sh
 * Users should be able to view all of their friends.
 * Users should be able to add new friends.
 * Users should be able to remove friends.
+
+## Groups (In Progress)
+
+* Users should be able to view all groups they are a part of.
+* Users should be able to create reoccurring expenses for groups.
+* Users should be able to update reoccurring expenses for groups.
+* Users should be able to delete reoccurring expenses for groups.
+* Users should be able to add and remove friends from groups.
+
+## Search (Coming Soon)
+
+## Messaging (Coming Soon)
+
+## User Profiles (Coming soon)
+
+## AWS S3 Image Upload (Coming Soon)

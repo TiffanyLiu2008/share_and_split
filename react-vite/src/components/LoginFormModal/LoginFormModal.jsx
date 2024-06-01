@@ -39,7 +39,7 @@ function LoginFormModal() {
       {errors.email && <p className='errors'>{errors.email}</p>}<br/>
       {errors.password && <p className='errors'>{errors.password}</p>}<br/>
       <label className='logInLabel'>
-        Email<br/>
+        Email address<br/>
         <input
           className='logInNormal'
           type="text"
