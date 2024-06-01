@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, RadioField, FloatField, IntegerField, BooleanField, SubmitField
+from wtforms import StringField, RadioField, FloatField, IntegerField, BooleanField, DateTimeField, SubmitField
 from wtforms.validators import DataRequired, ValidationError
 
 def amount_above_zero(form, field):
@@ -23,8 +23,9 @@ class CreateEditExpenseForm(FlaskForm):
         ('Uncategorized', 'Uncategorized')
     ]
     description = StringField('Description', validators=[DataRequired()])
-    category = RadioField('Category', choices=choices, default='Others', validators=[DataRequired()])
+    category = RadioField('Category', choices=choices, default='Uncategorized', validators=[DataRequired()])
     amount = FloatField('Amount', validators=[DataRequired(), amount_above_zero])
     shared_among = IntegerField('Number of people involved including yourself', validators=[DataRequired(), shared_with_people])
     bill_settled = BooleanField('Bill settled?', default=False, false_values=(False, '', 'false', 'False', 'FALSE'))
+    expense_date = DateTimeField('Expense date', format='%Y-%m-%d %H:%M:%S', validators=[DataRequired()])
     submit = SubmitField('Submit')

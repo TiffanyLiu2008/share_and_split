@@ -10,10 +10,11 @@ class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     lender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    category = db.Column(db.String(255), nullable=False, default='Others')
+    category = db.Column(db.String(255), nullable=False, default='Uncategorized')
     amount = db.Column(db.Float, nullable=False)
     shared_among = db.Column(db.Integer, nullable=False, default=1)
     bill_settled = db.Column(db.Boolean, nullable=False, default=False)
+    expense_date = db.Column(db.DateTime, nullable=False, default=func.now())
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now(), onupdate=func.now())
 
@@ -30,6 +31,7 @@ class Expense(db.Model):
             'amount': self.amount,
             'shared_among': self.shared_among,
             'bill_settled': self.bill_settled,
+            'expense_date': self.expense_date,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'each_person': self.amount / self.shared_among

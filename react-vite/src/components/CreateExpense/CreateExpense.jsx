@@ -8,7 +8,8 @@ function CreateExpense() {
     category: '',
     amount: '',
     shared_among: '',
-    bill_settled: ''
+    bill_settled: '',
+    expense_date: ''
   };
 
   return (

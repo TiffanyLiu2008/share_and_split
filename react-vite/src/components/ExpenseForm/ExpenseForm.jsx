@@ -13,6 +13,7 @@ function ExpenseForm({expense, formType}) {
   const [amount, setAmount] = useState(expense?.amount);
   const [shared_among, setSharedAmong] = useState(expense?.shared_among);
   const [bill_settled, setBillSettled] = useState(expense?.bill_settled);
+  const [expense_date, setExpenseDate] = useState(expense?.expense_date);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const title = formType === 'Create Expense' ? 'Add an expense' : 'Update my expense';
@@ -42,6 +43,9 @@ function ExpenseForm({expense, formType}) {
     if (!bill_settled) {
       newErrors.bill_settled = 'Status of bill is required';
     }
+    if (!expense_date) {
+      newErrors.expense_date = 'Expense date is required';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -49,6 +53,8 @@ function ExpenseForm({expense, formType}) {
     e.preventDefault();
     setErrors({});
     const isFormValid = validateForm();
+    const dateObj = new Date(expense_date);
+    const formattedExpenseDate = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')} ${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}:${dateObj.getSeconds().toString().padStart(2, '0')}`;
     if (isFormValid) {
       const formData = new FormData();
       formData.append('description', description);
@@ -56,6 +62,7 @@ function ExpenseForm({expense, formType}) {
       formData.append('amount', amount);
       formData.append('shared_among', shared_among);
       formData.append('bill_settled', bill_settled);
+      formData.append('expense_date', formattedExpenseDate);
       setIsLoading(true);
       try {
         if (formType === 'Update Expense') {
@@ -76,6 +83,7 @@ function ExpenseForm({expense, formType}) {
   const amountError = errors.amount ? `${errors.amount}` : null;
   const sharedAmongError = errors.shared_among ? `${errors.shared_among}` : null;
   const billSettledError = errors.bill_settled ? `${errors.bill_settled}` : null;
+  const expenseDateError = errors.expense_date ? `${errors.expense_date}` : null;
 
   return (
     <form className='expenseForm' onSubmit={handleSubmit}>
@@ -86,6 +94,7 @@ function ExpenseForm({expense, formType}) {
         <ul>{amountError}</ul>
         <ul>{sharedAmongError}</ul>
         <ul>{billSettledError}</ul>
+        <ul>{expenseDateError}</ul>
       </div>
       <label className='expenseFormLabel'>
         Description:<br/>
@@ -113,6 +122,10 @@ function ExpenseForm({expense, formType}) {
         <input type='radio' value='True' checked={bill_settled === 'True'} onChange={onStatusChange} required/>Yes
         <input type='radio' value='False' checked={bill_settled === 'False'} onChange={onStatusChange} required/>No
       </div>
+      <label className='expenseFormLabel'>
+        Date:<br/>
+        <input className='expenseFormNormal' type='date' value={expense_date} onChange={(e) => setExpenseDate(e.target.value)} required/><br/>
+      </label>
       {formType === 'Create Expense' &&
         <label className='expenseFormLabel'>
           Number of people involved in this expense including yourself:<br/>

@@ -47,7 +47,7 @@ function SignupFormModal() {
       {errors.password && <p className='errors'>{errors.password}</p>}<br/>
       {errors.confirmPassword && <p className='errors'>{errors.confirmPassword}</p>}<br/>
       <label className='signUpLabel'>
-        Email<br/>
+        Email address<br/>
         <input
           className='signUpNormal'
           type="text"

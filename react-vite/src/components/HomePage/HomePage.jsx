@@ -2,8 +2,8 @@ import './HomePage.css';
 import { useSelector } from 'react-redux';
 import SideNavigation from '../Navigation/SideNavigation';
 import entertainment from '../../../../images/entertainment.png';
-import food from '../../../../images/food.png';
-import housing from '../../../../images/housing.png';
+import food_and_drink from '../../../../images/food_and_drink.png';
+import home from '../../../../images/home.png';
 import transportation from '../../../../images/transportation.png';
 
 function HomePage() {
@@ -33,8 +33,8 @@ function HomePage() {
           <div className='mainContent'>
             <div className='homePageImages-2'>
               <img src={entertainment} alt='homePageImage1'/>
-              <img src={food} alt='homePageImage2'/>
-              <img src={housing} alt='homePageImage3'/>
+              <img src={food_and_drink} alt='homePageImage2'/>
+              <img src={home} alt='homePageImage3'/>
               <img src={transportation} alt='homePageImage4'/>
             </div>
           </div>
