@@ -6,7 +6,7 @@ def seed_expenses():
     movie = Expense(
         lender_id=1, description='Movie', category='Entertainment', amount=50, shared_among=5, bill_settled=False, expense_date=datetime(2020, 1, 1, 9, 0, 0))
     dinner = Expense(
-        lender_id=2, description='Dinner', category='Food and Drink', amount=150, shared_among=5, bill_settled=False, expense_date=datetime(2021, 1, 1, 9, 0, 0))
+        lender_id=2, description='Dinner', category='Food and drink', amount=150, shared_among=5, bill_settled=False, expense_date=datetime(2021, 1, 1, 9, 0, 0))
     rent = Expense(
         lender_id=3, description='Rent', category='Home', amount=5000, shared_among=5, bill_settled=False, expense_date=datetime(2022, 1, 1, 9, 0, 0))
     gym = Expense(

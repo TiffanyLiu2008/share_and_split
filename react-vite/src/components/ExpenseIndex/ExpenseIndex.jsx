@@ -1,5 +1,5 @@
 import './ExpenseIndex.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllExpenses } from '../../redux/expenses';
 import { Chart } from 'react-google-charts';
@@ -26,9 +26,16 @@ function ExpenseIndex() {
   const isLoading = !expenses;
   useEffect(() => {
     if (expenses) {
+      const categoryTotals = expenses.reduce((acc, expense) => {
+        if (!acc[expense.category]) {
+          acc[expense.category] = 0;
+        }
+        acc[expense.category] += expense.each_person;
+        return acc;
+      }, {});
       const categoryData = [
         ['Category', 'Amount'],
-        ...expenses.map(expense => [expense.category, expense.each_person])
+        ...Object.entries(categoryTotals).map(([category, amount]) => [category, amount])
       ];
       setCategoryChartData(categoryData);
       const dateData = [
@@ -48,14 +55,22 @@ function ExpenseIndex() {
         <Chart
           chartType='PieChart'
           data={categoryChartData}
-          options={{title: 'Expense Breakdown by Category'}}
+          options={{
+            title: 'Expense Breakdown by Category',
+            legend: 'none'
+          }}
           width='400px'
           height='400px'
         />
         <Chart
           chartType='LineChart'
           data={dateChartData}
-          options={{title: 'Expense Over Time', hAxis: {title: 'Date'}, vAxis: {title: 'Amount'}}}
+          options={{
+            title: 'Expense Over Time',
+            hAxis: {title: 'Date'},
+            vAxis: {title: 'Amount'},
+            legend: 'none'
+          }}
           width='400px'
           height='400px'
         />
