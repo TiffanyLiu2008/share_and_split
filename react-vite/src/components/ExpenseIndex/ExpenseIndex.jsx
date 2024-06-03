@@ -2,12 +2,15 @@ import './ExpenseIndex.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllExpenses } from '../../redux/expenses';
+import { Chart } from 'react-google-charts';
 import SideNavigation from '../Navigation/SideNavigation';
 import ExpenseIndexItem from '../ExpenseIndexItem';
 import expensesPic from '../../../../images/expenses.png';
 
 function ExpenseIndex() {
   const dispatch = useDispatch();
+  const [categoryChartData, setCategoryChartData] = useState([]);
+  const [dateChartData, setDateChartData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,11 +24,42 @@ function ExpenseIndex() {
   const expenses = useSelector(state => state.expenses.expenses);
   const noExpense = Array.isArray(expenses) && expenses.length === 0;
   const isLoading = !expenses;
+  useEffect(() => {
+    if (expenses) {
+      const categoryData = [
+        ['Category', 'Amount'],
+        ...expenses.map(expense => [expense.category, expense.each_person])
+      ];
+      setCategoryChartData(categoryData);
+      const dateData = [
+        ['Date', 'Amount'],
+        ...expenses.map(expense => [new Date(expense.expense_date).toLocaleDateString(), expense.each_person])
+      ];
+      setDateChartData(dateData);
+    }
+  }, [expenses]);
+
   if (isLoading) return (<>Loading...</>);
 
   return (
     <div className='expenseIndex'>
       <SideNavigation/>
+      <div className='chartContainer'>
+        <Chart
+          chartType='PieChart'
+          data={categoryChartData}
+          options={{title: 'Expense Breakdown by Category'}}
+          width='400px'
+          height='400px'
+        />
+        <Chart
+          chartType='LineChart'
+          data={dateChartData}
+          options={{title: 'Expense Over Time', hAxis: {title: 'Date'}, vAxis: {title: 'Amount'}}}
+          width='400px'
+          height='400px'
+        />
+      </div>
       <ul className='mainContent'>
         {noExpense &&
           <div>

@@ -14,7 +14,7 @@ ShareAndSplit, a Splitwise clone, is a website for friends to split bills for sh
 
 ## Expenses
 
-* Users should be able to view all of their pending and settled expenses.
+* Users should be able to view all of their pending and settled expenses, including Google Chart visualizations.
 * Users should be able to create a new expense and split it with other users.
 * Users should be able to update expenses they created.
 * Users should be able to delete expenses they created.
@@ -49,6 +49,6 @@ ShareAndSplit, a Splitwise clone, is a website for friends to split bills for sh
 
 ## Messaging (Coming Soon)
 
-## User Profiles (Coming soon)
+## User Profiles (Coming Soon)
 
 ## AWS S3 Image Upload (Coming Soon)
